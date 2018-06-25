@@ -1,0 +1,7 @@
+{
+  "name": "FoxFinder",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.5"
+  }
+}
