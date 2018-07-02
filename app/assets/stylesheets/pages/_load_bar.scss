@@ -1,0 +1,45 @@
+.load_bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 10vh;
+  margin-right: 10vh;
+  font-size: 20px;
+}
+
+#active-foxfinder {
+  background-color: #E69561;
+  color: white;
+  border: 1px solid #E69561;
+  border-radius: 50%;
+  margin-left: 55px;
+  margin-right: 34px;
+  text-align: center;
+  width: 55px;
+  padding: 5px;
+  font-size: 30px;
+}
+
+#non-active-foxfinder {
+  background-color: white;
+  color: #E69561;
+  border: 1px solid #E69561;
+  border-radius: 50%;
+  margin-left: 55px;
+  margin-right: 34px;
+  text-align: center;
+  width: 55px;
+  padding: 5px;
+  font-size: 30px;
+}
+
+@media only screen and (max-width:800px) {
+  .load_bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 0vh;
+    margin-right: 0vh;
+    font-size: 20px;
+  }
+}

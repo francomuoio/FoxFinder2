@@ -5,9 +5,9 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
+  #def new
   #   super
-  # end
+  #end
 
   # POST /resource
   # def create
@@ -42,7 +42,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  #  devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation])
   # end
 
   # If you have extra params to permit, append them to the sanitizer.

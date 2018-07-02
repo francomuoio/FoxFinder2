@@ -1,0 +1,14 @@
+<% if controller_name == "biens" && action_name == "index" || controller_name == "biens" && action_name == "graph" || controller_name == "biens" && action_name == "tables" || controller_name == "pages" && action_name == "resultat" ||  controller_name == "users" && action_name == "show" %>
+
+<% else %>
+
+
+ <div id="footer">
+  <div id="footer-links">
+      <%= link_to "Accueil", root_path, class: "links" %>
+      <%#= link_to "Espace pro", pro_path, class: "links" %>
+      <%#= link_to "Mentions légales", mentions_path, class: "links" %>
+      <%#= link_to "CGU", cgu_path, class: "links" %>
+  </div>
+</div>
+<% end %>

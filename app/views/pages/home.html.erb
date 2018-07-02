@@ -1,5 +1,14 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-  <br>
-    <%= link_to('Logout company', destroy_company_session_path, method: :delete) %>        
+<%= link_to t(".sign_in", default: "Se connecter user"), new_user_session_path, class: "btn btn-danger" %>
+<%= link_to t(".sign_in", default: "Se connecter company"), new_company_session_path, class: "btn btn-danger" %>
+<%= link_to  "Déconnexion user", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+<%= link_to  "Déconnexion company", destroy_company_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+
+
+ <br>
+ <% if user_signed_in? %>
+ <%= "bienvenue : #{current_user.first_name}" %>
+ <% end %>
+ <% if company_signed_in? %>
+ <%= "bienvenue : #{current_company.company_name}" %>
+ <%= link_to  "Profile", companies_path, class: "navbar-wagon-item navbar-wagon-link" %>
+ <% end %>

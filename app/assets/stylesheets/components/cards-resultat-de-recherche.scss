@@ -1,0 +1,93 @@
+.card-resultat-recherche-foxfinder {
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-color: #F1F3F4;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.ensemble-card-perd-resultat-recherche {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ensemble-card-perd-resultat-recherche p {
+  font-size: 20px;
+}
+
+.contact-agence-recherche-foxfinder {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-left: 55px;
+  margin-right: 55px;
+}
+
+.bouton-spécial-home-foxfinder-pour-quentin{
+  font-size: 15px;
+  color: white;
+  background-color: #ee7423;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+
+.bouton-spécial-home-foxfinder-pour-quentin:hover{
+ opacity: 0.7;
+}
+
+.bouton-contact-recherche-foxfinder {
+  margin: 10px;
+}
+
+p {
+  margin: 0 !important;
+}
+
+#couleur-spécial {
+ font-size: 28px;
+ color: #E86C42;
+}
+
+@media only screen and (max-width:800px) {
+
+.ensemble-card-perd-resultat-recherche p {
+  font-size: 12px;
+}
+
+.ensemble-card-perd-resultat-recherche {
+  font-size: 12px !important;
+  align-items: flex-start;
+}
+
+#couleur-spécial {
+ font-size: 14px;
+ color: #E86C42;
+}
+.bouton-spécial-home-foxfinder-pour-quentin{
+  font-size: 12px;
+  color: white;
+  background-color: #ee7423;
+  padding: 8px;
+  margin-top: 10px;
+  border-radius: 20px;
+}
+.contact-agence-recherche-foxfinder {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.etre-contactez-recherche-foxfinder {
+  margin-top: 12px;
+}
+
+.nom-agence {
+  font-size: 11px;
+}
+.photo-agence-card-resultat img {
+  height: 50px;
+  width: 50px;
+}
+}

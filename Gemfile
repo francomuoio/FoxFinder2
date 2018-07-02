@@ -14,9 +14,28 @@ gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'font-awesome-sass', '~> 5.0.9'
 gem 'sass-rails'
-gem 'simple_form'
 gem 'uglifier'
 gem 'webpacker'
+gem "jquery-rails"
+gem 'jquery-ui-rails'
+
+
+
+# gems for pictures upload
+gem "attachinary"
+gem "jquery-fileupload-rails"
+gem "coffee-rails"
+gem 'cloudinary'
+
+# Pundit provides a set of helpers which guide you in leveraging regular Ruby classes
+# and object oriented design patterns to build a simple, robust and scaleable authorization system.
+gem 'pundit'
+
+# gem for form
+gem 'simple_form'
+gem 'simple_form_autocomplete'
+
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'

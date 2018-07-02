@@ -1,0 +1,60 @@
+<% content_for(:after_js) do %>
+			<%= javascript_tag do %>
+			$(document).ready(function() {
+			var handler = Gmaps.build('Google', { markers: { maxRandomDistance: 12 }});
+			handler.buildMap({provider: {scrollwheel: false, styles: [
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "stylers": [
+      {
+        "weight": 2.5
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+]}, internal: { id: 'map' } }, function() {
+			markers = handler.addMarkers(<%= raw @hash.to_json %>);
+			agences = handler.addMarkers(<%= raw @hashagences.to_json %>);
+  ]);
+
+			handler.bounds.extendWith(markers, agences);
+			<!-- handler.bounds.extendWith(agences); -->
+			handler.fitMapToBounds();
+      handler.map.centerOn(<%= Geocoder.coordinates(params[:location]) %>);
+      handler.getMap().setZoom(17);
+			if (markers.length == 0) {
+			handler.getMap().setZoom(14)
+			handler.map.centerOn(<%= Geocoder.coordinates(params[:location]) %>);
+		} else if (markers.length > 1) {
+      handler.getMap().setZoom(15)
+			handler.map.centerOn(<%= Geocoder.coordinates(params[:location]) %>);
+	}
+});
+});
+<% end %>
+<% end %>

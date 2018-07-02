@@ -21,6 +21,22 @@ class DeviseCreateCompanies < ActiveRecord::Migration[5.2]
       t.inet     :current_sign_in_ip
       t.inet     :last_sign_in_ip
 
+      # Companies informations FoxFinder
+      t.string :company_name
+      t.string :manager_first_name
+      t.string :manager_last_name
+      t.string :address
+      t.string :siret
+      t.string :pro_card_nbr
+      t.string :phone
+      t.string :company_type
+      t.boolean :siege
+      t.boolean :premium
+      t.string :website
+      t.text :description
+      t.string :photo
+      t.string :cover
+      
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

@@ -1,0 +1,27 @@
+.document-pdf {
+  background-image: asset-data-url("fond.png");
+  background-size: 23cm 13cm;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 50% 70%;
+  font-family: "Helvetica Neue", Helvetica;
+}
+
+.document-pdf td {
+  border-color: black; border-width: 1px;
+}
+
+.info-pdf {
+  font-size: 22px !important;
+}
+
+.table-pdf {
+  background-image: asset-data-url("fond.png");
+  background-size: 23cm 13cm;
+  background-color: white;
+  background-repeat: no-repeat;
+  background-position: 50% 30%;
+  font-family: "Helvetica Neue", Helvetica;
+}
+
+.page-break { display:block; clear:both; page-break-after:always; }

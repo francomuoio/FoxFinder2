@@ -1,0 +1,94 @@
+.banner {
+  color: white;
+  text-align: center;
+  height: 95vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: normal;
+  justify-content: center;
+
+}
+
+.banner h1 {
+  font-size: 40px;
+}
+
+.banner h3 {
+  font-size: 25px;
+}
+
+.banner-pro {
+  color: white;
+  text-align: center;
+  height: 95vh;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: normal;
+  justify-content: center;
+
+}
+
+.banner-pro h1 {
+  font-size: 65px;
+}
+
+.banner-pro h3 {
+  font-size: 30px;
+}
+
+
+.todo-text h2 {
+  font-size: 30px;
+}
+
+@media screen and (min-width: 1600px) {
+  .banner h1 {
+    font-size: 52px;
+  }
+  .banner h3 {
+    font-size: 28px;
+  }
+  .todo-text h2 {
+    font-size: 36px;
+  }
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 667px)
+and (orientation : portrait) {
+   /* STYLES GO HERE */
+  .launch h1 {
+    font-size: 30px !important;
+  }
+}
+
+.banner p {
+  font-size: 25px;
+  // font-weight: lighter;
+  color: rgb(255, 255, 255);
+  // opacity: 0.6;
+  margin-bottom: 30px;
+}
+
+.credit {
+  font-size: 1px;
+}
+
+.parallax {
+    /* The image used */
+    background-image: url(asset-path('parallax.jpg'));
+
+    /* Set a specific height */
+    height: 400px;
+
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

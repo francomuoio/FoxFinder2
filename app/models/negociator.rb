@@ -1,0 +1,2 @@
+class Negociator < ApplicationRecord
+end

@@ -1,0 +1,21 @@
+.conv-box {
+  background-size: cover;
+  overflow: hidden;
+  -webkit-filter: blur(100px);
+  filter: blur(100px);
+  position: absolute;
+}
+
+.recherche-boutton {
+  background: #F96332;
+    color: white;
+    font: 'trebuchet ms', trebuchet;
+    padding: 10px 20px;
+    border-radius: 0 5px 5px 0;
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -o-border-radius: 0 5px 5px 0;
+    border: 0 none;
+    font-weight: bold;
+    font-size: 12px;
+}

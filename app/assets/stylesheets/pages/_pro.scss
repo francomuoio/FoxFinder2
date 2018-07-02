@@ -1,0 +1,315 @@
+.pro-avantages {
+  width: 100%;
+  padding: 50px;
+  // background-color: rgba(112, 111, 111, 0.9);
+  // color: white;
+}
+
+.pro-title {
+  margin-bottom: 12%;
+  margin-top: -18%;
+}
+.delete-compte:hover
+{
+  color:black;
+}
+.pro-title-1 {
+  padding-top: 20px;
+}
+
+.titre-pro-element {
+  margin-top: -2%;
+}
+
+.pro-bouton {
+  margin-top: 5%;
+  margin-bottom: 1%;
+}
+
+.pro-timeline {
+  margin-top: 0%;
+  margin-bottom: 6vh;
+}
+
+.pro-ccm {
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  padding: 50px;
+  background-color: rgba(112, 111, 111, 0.9);
+  color: white;
+}
+
+.pro-desc-ccm {
+   color: white;
+   font-size: 22px;
+   padding-top: 20px;
+}
+
+i {
+  color: #EE7423;
+}
+
+.banner-content {
+  margin-top: 10vh;
+}
+
+.protest {
+  background-color: #F4F3F1;
+}
+
+.tarifs {
+  margin-top: 50px;
+  // margin-bottom: 50px;
+  background-color: #F4F3F1;
+  width: 100%;
+}
+
+.couleur-tarification {
+  background-color: #F4F3F1;
+  width: 100%;
+  text-align: center;
+}
+
+
+.tableu-tarif th {
+  padding: 20px;
+  border-bottom: 1px solid #E0DFDE;
+  margin-left: 20px;
+}
+
+.tableu-tarif td {
+  border-bottom: 1px solid #E0DFDE;
+
+}
+
+.tableu-tarif {
+  text-align: center;
+  background-color: red;
+  width: 100%;
+}
+
+.titrepro {
+  margin-bottom: 2%;
+}
+
+.perf-text {
+  margin-left: 5%;
+  margin-top: 3%;
+}
+
+.pro-demo {
+   width: 100%;
+}
+
+#courbe-pro {
+  margin-left: 13%
+}
+
+#pro-filtre-photo {
+  margin-top: 6%;
+}
+
+.liste-filtre-pro {
+  margin-top: 8%;
+}
+
+.pichidemobile {display: inline;}
+.picshowmobile {display: none;}
+.mobileHide {display: inline;}
+.mobileShow {display: inline;}
+.messagetab {
+  display: none;
+  text-align: center;
+
+}
+
+.photodash {
+  margin-left: 5%;
+}
+
+.board-text {
+  margin-top: 2%;
+}
+
+.relation-text {
+  margin-left: 23%;
+}
+
+#pro-graph-photo {
+  margin-left: 17%;
+  margin-top: 5%;
+}
+
+.pro-tableau-stats {
+  margin-top: 5%;
+}
+
+.margin-class-stats {
+  margin-bottom: 3%;
+}
+
+.modif-code-de-merde table {
+  font-size: 18px;
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 667px)
+and (orientation : portrait) {
+  /* STYLES GO HERE */
+  .namanyay-search-box-type {
+    padding: 20px !important;
+  }
+  .banner-content {
+  margin-top: 10px !important;
+  }
+  .pichidemobile {
+    display: none;
+  }
+  .picshowmobile {
+    display: inline;
+  }
+  .mobileHide { display: none;}
+  .messagetab {
+    display: inline;
+    margin-bottom: 10%;
+  }
+  .messagetab h2 {
+    font-size: 16px;
+  }
+  .resizepro h4 {
+    font-size: 17px;
+  }
+  .resizepro li h3 {
+    font-size: 16px;
+  }
+  .resizepro h4 b {
+    font-size: 17px;
+  }
+  .resizepro h2 {
+    font-size: 24px;
+    margin-left: 5%;
+  }
+  .titrepro {
+    font-size: 28px;
+  }
+  .pro-ccm h5 {
+    margin-top: 6%;
+    margin-bottom: 5%;
+  }
+  .pro-avantages h4 {
+    margin-top: 6%;
+    margin-bottom: 5%;
+  }
+  .titreespacestat {
+    margin-bottom: 5%;
+  }
+  .photodash {
+    margin-left: 0%;
+  }
+  .board-text {
+    margin-top: 0%;
+  }
+  .perf-text {
+    margin-left: 0%;
+  }
+  .relation-text {
+    margin-left: 0%;
+  }
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 667px)
+and (orientation : landscape) {
+  /* STYLES GO HERE */
+  #address {
+
+  }
+  .blur {
+    display: none;
+  }
+  .headermobile h2 {
+    font-size: 30px !important;
+  }
+  .headermobile h3 {
+    font-size: 21px !important;
+  }
+  .conseiller b {
+    font-size: 18px !important;
+  }
+  .donnes h4 {
+    font-size: 16px !important;
+  }
+  .locktext h3 {
+    font-size: 20px !important;
+  }
+  .namanyay-search-box-piece {
+    width: 120px !important;
+  }
+  .namanyay-search-box {
+    width: 155px !important;
+  }
+  .namanyay-search-box-type {
+    width: 100px !important;
+  }
+  .banner-content {
+  margin-top: 10px !important;
+  }
+  .messagetab { display: none;}
+  .mobileShow {display: inline;}
+  .messagetab h2 {
+    font-size: 16px;
+  }
+  .resizepro h4 {
+    font-size: 17px;
+  }
+  .resizepro li h3 {
+    font-size: 16px;
+  }
+  .resizepro h4 b {
+    font-size: 17px;
+  }
+  .resizepro h2 {
+    font-size: 24px;
+    margin-left: 5%;
+  }
+  .titrepro {
+    font-size: 28px;
+  }
+  .pro-ccm h5 {
+    margin-top: 6%;
+    margin-bottom: 5%;
+  }
+  .pro-avantages h4 {
+    margin-top: 6%;
+    margin-bottom: 5%;
+  }
+  .titreespacestat {
+    margin-bottom: 5%;
+  }
+  .photodash {
+    margin-left: 0%;
+  }
+  .board-text {
+    margin-top: 0%;
+  }
+  .pichidemobile {
+    display: none !important;
+  }
+  .picshowmobile {
+    display: inline !important;
+  }
+  .perf-text {
+    margin-left: 0%;
+  }
+  .relation-text {
+    margin-left: 0%;
+  }
+}
+
+.ensemble {
+  top: 50%;
+  left: 50%;
+  transform: translate(-2%, 50%);
+}

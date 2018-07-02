@@ -1,0 +1,104 @@
+.pipedriveWebForms {
+  height: 800px !important; /* you have to update this to fit your needs */
+}
+
+.profile-page {
+width: 95%;
+margin: auto;
+}
+
+.websitelink {
+  color: #EF8238;
+  font-weight: normal;
+}
+
+.websitelink:hover, .websitelink:focus {
+  color: #EF8238;
+  text-decoration: underline;
+}
+
+.profile-banner {
+  height: 350px;
+  color: white;
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size: cover;
+}
+
+.profile-stat {
+  // background-color: #EF8238;
+  color: white;
+  margin-top: 15px;
+}
+
+.profile-infos {
+
+}
+
+.profile-map {
+  margin-top: 15px;
+}
+
+.profile-equipe {
+  margin-top: 15px;
+}
+
+.nego-img {
+  border-radius: 100px;
+}
+
+.default-nego {
+  border-radius: 150px;
+  height: 150px;
+  width: 150px;
+}
+
+.biobackbground {
+  // background-color: #F4F3F1;
+}
+
+.user-bio {
+  background-color: #F4F3F1;
+  margin-top: 15px;
+}
+
+.user-offre {
+  color: #EF8238;
+  margin-top: 15px;
+}
+
+.user-img {
+  margin-top: 8%;
+  margin-left: 5%;
+}
+
+@media screen and (min-width: 1600px) {
+  .user-img {
+    margin-top: 7%;
+    margin-left: 5%;
+  }
+ }
+
+
+.info-card {
+  margin-top: 150px;
+}
+
+.profile-card {
+  color: black;
+  background-color: white;
+  // opacity: 0.8;
+  text-align: center;
+  margin-top: 4%;
+  width: 20%;
+  height: 300px;
+}
+
+.profilepic {
+  border-width: 5px;
+  height: 150px;
+  width: 150px;
+  border-color: white;
+  border-style: solid;
+
+}
