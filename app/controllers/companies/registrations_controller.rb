@@ -1,8 +1,6 @@
-# frozen_string_literal: true
-
 class Companies::RegistrationsController < Devise::RegistrationsController
-  # before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   #def new
@@ -25,10 +23,13 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # end
 
   # DELETE /resource
-  # def destroy
-  #   super
-  # end
-
+  def destroy
+    if (current_company.id == params[:id])
+     super
+   else
+     redirect_to companies_path, alert: "Vous ne pouvez pas faire ça."
+  end
+end
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
   # in to be expired now. This is useful if the user wants to
@@ -41,14 +42,16 @@ class Companies::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation])
   #  devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation])
-  # end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
+    def configure_account_update_params
   #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+      devise_parameter_sanitizer.permit(:account_update, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation, :website, :description, negociators_id: [:first_name, :last_name]])
+    end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)

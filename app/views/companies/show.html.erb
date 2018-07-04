@@ -1,4 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%= @company.company_name %>
+[<%= @company.id %>]
+
+<br>
+NEGOCIATOR :
+<br>
+<% @negociator.each do |negociator| %>
+  <tr>
+    <td><%= negociator.first_name %> <%= negociator.last_name %> [<%= negociator.id %>] </td>
+    <td><%= link_to 'Show', company_negociator_path(company_id: current_company.id, id: negociator.id) %></td>
+    <td><%= link_to 'Destroy', company_negociator_path(company_id: current_company.id, id: negociator.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr><br>
+<% end %>
+<br>
+
+PROPERTY
+<br>
+<% @property.each do |property| %>
+  <tr>
+    <td><%= property.address %> <%= property.price %> [<%= property.id %>] </td>
+    <td><%= link_to 'Show', company_property_path(company_id: current_company.id, id: property.id) %></td>
+    <td><%= link_to 'Destroy', company_property_path(company_id: current_company.id, id: property.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr><br>
+<% end %>
+
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_index_path %>
+<%= link_to 'Back', companies_path %>

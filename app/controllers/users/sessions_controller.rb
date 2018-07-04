@@ -1,14 +1,15 @@
-# frozen_string_literal: true
-
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
   include Accessible
  skip_before_action :check_user, only: :destroy
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    if company_signed_in?
+      redirect_to root_path, alert: "Vous êtes déja connecté en tant qu'Agence."
+    end
+    super
+  end
 
   # POST /resource/sign_in
   # def create
@@ -16,9 +17,13 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #  super
-  # end
+  def destroy
+      if user_signed_in?
+        super
+      else
+        redirect_to root_path, alert: "Vous n'êtes pas autorisé à acceder à ce lien."
+      end
+  end
 
   # protected
 

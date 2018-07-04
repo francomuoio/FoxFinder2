@@ -1,7 +1,14 @@
 
-<%= simple_form_for(@negociator) do |f| %>
+<%= simple_form_for(@negociator, as: :negociator, method: :post, url: company_negociators_path) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.input :first_name, autofocus: true, label: "Prénom" %>
+  <%= f.input :last_name, autofocus: true, label: "Nom" %>
+  <%#= f.input :companies_id, current_company, :id, :company_name, { selected: @negociator.companies_id }, disabled: true %>
+
+
+  <%= f.input :companies_id, :as => :hidden, input_html: {id: 'companies_id', value: params[:company_id] } %>
+
 
   <div class="form-inputs">
   </div>

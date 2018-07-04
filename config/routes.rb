@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :companies
-  resources :negociators
-  mount Attachinary::Engine => "/attachinary"
   devise_for :companies, path: 'company', controllers: {
    confirmations: 'companies/confirmations',
    registrations: 'companies/registrations',
@@ -11,9 +7,10 @@ Rails.application.routes.draw do
    unlocks: 'companies/unlocks'
  }
 
-resources :companies
-resources :properties
-resources :negociators
+resources :companies do
+    resources :properties
+    resources :negociators
+end
 
 devise_for :users, path: 'user', controllers: {
  confirmations: 'users/confirmations',

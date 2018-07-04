@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Negociators</h1>
+<h1>Negociators de <%= current_company.company_name %></h1>
 
 <table>
   <thead>
@@ -12,9 +12,10 @@
   <tbody>
     <% @negociators.each do |negociator| %>
       <tr>
-        <td><%= link_to 'Show', negociator %></td>
-        <td><%= link_to 'Edit', edit_negociator_path(negociator) %></td>
-        <td><%= link_to 'Destroy', negociator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= negociator.first_name %> <%= negociator.last_name %>
+        <td><%= link_to 'Show', company_negociator_path(company_id: current_company.id, id: negociator.id) %></td>
+        <td><%= link_to 'Edit', edit_company_negociator_path(id: negociator, company_id: current_company.id) %></td>
+        <td><%= link_to 'Destroy', company_negociator_path(company_id: current_company.id, id: negociator.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Negociator', new_negociator_path %>
+<%= link_to 'New Negociator', new_company_negociator_path %>

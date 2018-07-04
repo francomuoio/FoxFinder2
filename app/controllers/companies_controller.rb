@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_company!
   before_action :set_company, only: [:show, :edit, :update, :destroy]
+  before_action :check_authorization, only: [:show, :edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
@@ -10,6 +12,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @property = Property.where(companies_id: current_company.id)
+    @negociator = Negociator.where(companies_id: current_company.id)
   end
 
   # GET /companies/new
@@ -70,5 +74,11 @@ class CompaniesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
       params.fetch(:company, {})
+    end
+
+    def check_authorization
+      if (@company.id != current_company.id)
+        redirect_to companies_path, alert: "Vous n'avez pas les droits requis pour cette action"
+      end
     end
 end

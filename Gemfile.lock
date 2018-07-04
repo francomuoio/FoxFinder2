@@ -58,6 +58,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (10.0.2)
+    cancan (1.6.10)
     cloudinary (1.1.7)
       aws_cf_signer
       rest-client
@@ -140,8 +141,6 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     puma (3.11.4)
-    pundit (1.1.0)
-      activesupport (>= 3.0.0)
     rack (2.0.5)
     rack-proxy (0.6.4)
       rack
@@ -249,6 +248,7 @@ DEPENDENCIES
   autoprefixer-rails
   bootsnap
   bootstrap-sass (~> 3.3)
+  cancan
   cloudinary
   coffee-rails
   devise
@@ -263,7 +263,6 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
-  pundit
   rails (= 5.2.0)
   redis
   sass-rails

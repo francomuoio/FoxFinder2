@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_27_115023) do
+ActiveRecord::Schema.define(version: 2018_07_04_125739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 2018_06_27_115023) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "visibility"
+    t.bigint "companies_id"
+    t.index ["companies_id"], name: "index_negociators_on_companies_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -84,6 +86,8 @@ ActiveRecord::Schema.define(version: 2018_06_27_115023) do
     t.integer "price"
     t.boolean "fake"
     t.bigint "negociators_id"
+    t.bigint "companies_id"
+    t.index ["companies_id"], name: "index_properties_on_companies_id"
     t.index ["negociators_id"], name: "index_properties_on_negociators_id"
   end
 
@@ -112,5 +116,7 @@ ActiveRecord::Schema.define(version: 2018_06_27_115023) do
 
   add_foreign_key "companies", "negociators", column: "negociators_id"
   add_foreign_key "companies", "properties", column: "properties_id"
+  add_foreign_key "negociators", "companies", column: "companies_id"
+  add_foreign_key "properties", "companies", column: "companies_id"
   add_foreign_key "properties", "negociators", column: "negociators_id"
 end

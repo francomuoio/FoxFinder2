@@ -1,10 +1,12 @@
 class NegociatorsController < ApplicationController
   before_action :set_negociator, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_company!
+  before_action :check_authorization
 
   # GET /negociators
   # GET /negociators.json
   def index
-    @negociators = Negociator.all
+    @negociators = Negociator.where(companies_id: params[:company_id])
   end
 
   # GET /negociators/1
@@ -28,7 +30,7 @@ class NegociatorsController < ApplicationController
 
     respond_to do |format|
       if @negociator.save
-        format.html { redirect_to @negociator, notice: 'Negociator was successfully created.' }
+        format.html { redirect_to company_negociators_path, notice: 'Negociator was successfully created.' }
         format.json { render :show, status: :created, location: @negociator }
       else
         format.html { render :new }
@@ -42,7 +44,7 @@ class NegociatorsController < ApplicationController
   def update
     respond_to do |format|
       if @negociator.update(negociator_params)
-        format.html { redirect_to @negociator, notice: 'Negociator was successfully updated.' }
+        format.html { redirect_to company_negociators_path, notice: 'Negociator was successfully updated.' }
         format.json { render :show, status: :ok, location: @negociator }
       else
         format.html { render :edit }
@@ -56,7 +58,7 @@ class NegociatorsController < ApplicationController
   def destroy
     @negociator.destroy
     respond_to do |format|
-      format.html { redirect_to negociators_url, notice: 'Negociator was successfully destroyed.' }
+      format.html { redirect_to company_negociators_path, notice: 'Negociator was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -69,6 +71,13 @@ class NegociatorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def negociator_params
-      params.fetch(:negociator, {})
+       params.require(:negociator).permit(:first_name, :last_name, :companies_id)
     end
+
+    def check_authorization
+      company = Company.find_by_id(params[:company_id])
+      if (company.id != current_company.id)
+        redirect_to companies_path, alert: "Vous n'avez pas les droits requis pour cette action"
+      end
+  end
 end

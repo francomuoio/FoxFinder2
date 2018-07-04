@@ -1,13 +1,14 @@
-# frozen_string_literal: true
-
 class Companies::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
+  # before_action :configure_sign_up_params, only: [:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
-
+  def new
+    if user_signed_in?
+      redirect_to root_path, alert: "Vous êtes déja connecté en tant qu'Utilisateur."
+    else
+      super
+    end
+  end
   # POST /resource/sign_in
   # def create
   #   super
@@ -17,6 +18,8 @@ class Companies::SessionsController < Devise::SessionsController
   def destroy
     if company_signed_in?
       super
+    else
+      redirect_to root_path, alert: "Vous n'êtes pas autorisé à acceder à ce lien."
     end
   end
 

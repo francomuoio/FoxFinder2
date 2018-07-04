@@ -1,5 +1,5 @@
-<%= render 'companies/shared/nav' %>
-
+<%= params[:id] %>
+<%= current_company.id %>
   <div class="content" style="margin-top: 0%; margin-right:0%; margin-left: 0%; padding-top: 0px;">
     <div class="resizedashboard">
 
@@ -53,6 +53,11 @@
                 <div class="col-sm-6">
                   <div class="form-group">
                     <%= f.input :website, autofocus: true, label: "Site Web" %>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <%= f.collection_select :negociators_id, Negociator.all, :id, :first_name, { selected: @company.negociators_id }, { class: 'form-control chosen-select' } %>
                   </div>
                 </div>
               </div>
