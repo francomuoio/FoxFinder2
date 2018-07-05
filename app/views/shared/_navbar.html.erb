@@ -7,20 +7,24 @@
 
 
       <% if controller_name == "pages" && action_name == "home" %>
-      <div class="hidden-xs">
-        <a href="#ccm" class="navbar-wagon-item navbar-wagon-link">Comment ça marche ?</a>
-        <a href="#avantages" class="navbar-wagon-item navbar-wagon-link">Nos avantages</a>
-        <a href="#team" class="navbar-wagon-item navbar-wagon-link">Notre équipe</a>
-        <a href="#contact" class="navbar-wagon-item navbar-wagon-link">Contact</a>
-        <a class="navbar-wagon-item navbar-wagon-link" href="/blog" >Blog</a>
-      </div>
-      <% elsif controller_name == "pages" && action_name == "pro" %>
-      <div class="hidden-xs">
-          <a href="#ccm" class="navbar-wagon-item navbar-wagon-link js-scrollTo" style="padding-right: 170px">Comment ça marche ?</a>
-        <a href="#proavantages" class="navbar-wagon-item navbar-wagon-link js-scrollTo" style="padding-right: 170px">Nos avantages</a>
+        <div class="hidden-xs">
+          <a href="#ccm" class="navbar-wagon-item navbar-wagon-link">Comment ça marche ?</a>
+          <a href="#avantages" class="navbar-wagon-item navbar-wagon-link">Nos avantages</a>
+          <a href="#team" class="navbar-wagon-item navbar-wagon-link">Notre équipe</a>
+          <a href="#contact" class="navbar-wagon-item navbar-wagon-link">Contact</a>
+          <a class="navbar-wagon-item navbar-wagon-link" href="/blog" >Blog</a>
+          <%= link_to t(".sign_in", default: "Se connecter user"), new_user_session_path, class: "btn btn-danger" %>
+          <%= link_to t(".sign_in", default: "Se connecter company"), new_company_session_path, class: "btn btn-danger" %>
+          <%= link_to  "Déconnexion user", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+          <%= link_to  "Déconnexion company", destroy_company_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+        </div>
+        <% elsif controller_name == "pages" && action_name == "pro" %>
+        <div class="hidden-xs">
+            <a href="#ccm" class="navbar-wagon-item navbar-wagon-link js-scrollTo" style="padding-right: 170px">Comment ça marche ?</a>
+          <a href="#proavantages" class="navbar-wagon-item navbar-wagon-link js-scrollTo" style="padding-right: 170px">Nos avantages</a>
 
-        <a href="#tarif" class="navbar-wagon-item navbar-wagon-link js-scrollTo">Nos offres</a>
-      </div>
+          <a href="#tarif" class="navbar-wagon-item navbar-wagon-link js-scrollTo">Nos offres</a>
+        </div>
       <% end %>
 
 
@@ -49,27 +53,26 @@
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <% if controller_name == "pages" && action_name == "home" %>
-          <li><a href="#ccm" class="navbar-wagon-item navbar-wagon-link">Comment ça marche ?</a></li>
+            <li><a href="#ccm" class="navbar-wagon-item navbar-wagon-link">Comment ça marche ?</a></li>
 
-          <li><a href="#avantages" class="navbar-wagon-item navbar-wagon-link">Nos avantages</a></li>
-          <li><a href="#team" class="navbar-wagon-item navbar-wagon-link">Notre équipe</a></li>
-          <% elsif controller_name == "pages" && action_name == "pro" %>
+            <li><a href="#avantages" class="navbar-wagon-item navbar-wagon-link">Nos avantages</a></li>
+            <li><a href="#team" class="navbar-wagon-item navbar-wagon-link">Notre équipe</a></li>
+            <% elsif controller_name == "pages" && action_name == "pro" %>
 
-          <li><a href="#ccm" class="navbar-wagon-item navbar-wagon-link">Comment ça marche ?</a></li>
-          <li><a href="#proavantages" class="navbar-wagon-item navbar-wagon-link">Nos avantages</a></li>
-          <li><a href="#tarif" class="navbar-wagon-item navbar-wagon-link">Nos offres</a></li>
+            <li><a href="#ccm" class="navbar-wagon-item navbar-wagon-link">Comment ça marche ?</a></li>
+            <li><a href="#proavantages" class="navbar-wagon-item navbar-wagon-link">Nos avantages</a></li>
+            <li><a href="#tarif" class="navbar-wagon-item navbar-wagon-link">Nos offres</a></li>
           <% end %>
-          <% if user_signed_in? %>
-          <%= link_to t(".top_call_to_action", default: "Dashboard root"), root_path, class: "btn btn-danger", style: "margin-right: 10px;" %>
-          <%= link_to  "Déconnexion", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
-          <% else %>
-
-            <% if controller_name == "pages" && action_name == "pro" %>
-              <li><%= link_to t(".top_call_to_action", default: "Espace Client"), root_path, class: "btn btn-danger"%></li>
-              <li><%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "btn btn-danger" %></li>
+            <% if user_signed_in? %>
+            <%= link_to t(".top_call_to_action", default: "Dashboard root"), root_path, class: "btn btn-danger", style: "margin-right: 10px;" %>
+            <%= link_to  "Déconnexion", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
             <% else %>
-              <li><%#= link_to t(".top_call_to_action", default: "Espace Pro"), pro_path%></li>
 
+              <% if controller_name == "pages" && action_name == "pro" %>
+                <li><%= link_to t(".top_call_to_action", default: "Espace Client"), root_path, class: "btn btn-danger"%></li>
+                <li><%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "btn btn-danger" %></li>
+              <% else %>
+                <li><%#= link_to t(".top_call_to_action", default: "Espace Pro"), pro_path%></li>
             <% end %>
           <% end %>
         </ul>
@@ -84,7 +87,7 @@
 
 
 
-<div class="picshowmobile">
+<!-- <div class="picshowmobile">
   <div class="navbar-wagon">
     <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logo.png", class: "logo-navbar" %>
@@ -134,4 +137,4 @@
       <% end %>
     </div>
   </div>
-</div>
+</div> -->

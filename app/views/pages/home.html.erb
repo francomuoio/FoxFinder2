@@ -1,10 +1,3 @@
-<%= link_to t(".sign_in", default: "Se connecter user"), new_user_session_path, class: "btn btn-danger" %>
-<%= link_to t(".sign_in", default: "Se connecter company"), new_company_session_path, class: "btn btn-danger" %>
-<%= link_to  "Déconnexion user", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
-<%= link_to  "Déconnexion company", destroy_company_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
-
-
- <br>
  <% if user_signed_in? %>
  <%= "bienvenue : #{current_user.first_name}" %>
  <% end %>
@@ -12,3 +5,5 @@
  <%= "bienvenue : #{current_company.company_name}" %>
  <%= link_to  "Profile", companies_path, class: "navbar-wagon-item navbar-wagon-link" %>
  <% end %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(102, 102, 102, 0.5) 0%, rgba(102, 102, 102, 0.5) 50%), url('<%= image_path "background.jpg" %>');">
+</div>
