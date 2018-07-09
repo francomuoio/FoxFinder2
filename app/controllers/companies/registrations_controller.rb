@@ -27,7 +27,7 @@ class Companies::RegistrationsController < Devise::RegistrationsController
     if (current_company.id == params[:id])
      super
    else
-     redirect_to companies_path, alert: "Vous ne pouvez pas faire ça."
+     redirect_to company_path(current_company.id), alert: "Vous ne pouvez pas faire ça."
   end
 end
   # GET /resource/cancel
@@ -43,7 +43,7 @@ end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation, :website, :description])
   #  devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation])
   end
 

@@ -1,4 +1,4 @@
-class Company < ApplicationRecord
+class Company < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,4 +10,8 @@ class Company < ApplicationRecord
   def set_default_role
     self.role ||= :free_company
   end
+
+  has_many :negociators
+  has_many :properties
+
 end

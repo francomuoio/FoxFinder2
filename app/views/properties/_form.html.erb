@@ -10,8 +10,8 @@
   <%= f.input :compromis_date, as: :date %>
   <%= f.input :address %>
   <%= f.input :price, as: :numeric %>
-  <%= f.collection_select :negociators_id, @negociator, :id, :first_name %>
-  <%= f.input :companies_id, :as => :hidden, input_html: {id: 'companies_id', value: params[:company_id] } %>
+  <%= f.collection_select :negociator_id, @negociator, :id, :full_name %>
+  <%= f.input :company_id, :as => :hidden, input_html: {id: 'companies_id', value: params[:company_id] } %>
 
   <div class="form-inputs">
   </div>

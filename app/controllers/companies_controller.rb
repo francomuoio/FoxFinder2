@@ -6,19 +6,19 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Companies.all
+    @companies = Company.all
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
-    @property = Property.where(companies_id: current_company.id)
-    @negociator = Negociator.where(companies_id: current_company.id)
+    @property = @company.properties
+    @negociator = @company.negociators
   end
 
   # GET /companies/new
   def new
-    @company = Companies.new
+    @company = Company.new
   end
 
   # GET /companies/1/edit
@@ -28,7 +28,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   # POST /companies.json
   def create
-    @company = Companies.new(company_params)
+    @company = Company.new(company_params)
 
     respond_to do |format|
       if @company.save
@@ -58,9 +58,11 @@ class CompaniesController < ApplicationController
   # DELETE /companies/1
   # DELETE /companies/1.json
   def destroy
+    Property.where(company_id: @company.id).destroy_all
+    Negociator.where(company_id: @company.id).destroy_all
     @company.destroy
     respond_to do |format|
-      format.html { redirect_to companies_index_url, notice: 'Companies was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Company was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -68,7 +70,7 @@ class CompaniesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_company
-      @company = Companies.find(params[:id])
+      @company = Company.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -78,7 +80,7 @@ class CompaniesController < ApplicationController
 
     def check_authorization
       if (@company.id != current_company.id)
-        redirect_to companies_path, alert: "Vous n'avez pas les droits requis pour cette action"
+        redirect_to company_path(current_company.id), alert: "Vous n'avez pas les droits requis pour cette action"
       end
     end
 end

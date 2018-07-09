@@ -6,7 +6,7 @@ class NegociatorsController < ApplicationController
   # GET /negociators
   # GET /negociators.json
   def index
-    @negociators = Negociator.where(companies_id: params[:company_id])
+    @negociators = current_company.negociators
   end
 
   # GET /negociators/1
@@ -56,6 +56,7 @@ class NegociatorsController < ApplicationController
   # DELETE /negociators/1
   # DELETE /negociators/1.json
   def destroy
+    Property.where(negociator_id: @negociator.id).destroy_all
     @negociator.destroy
     respond_to do |format|
       format.html { redirect_to company_negociators_path, notice: 'Negociator was successfully destroyed.' }
@@ -71,13 +72,13 @@ class NegociatorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def negociator_params
-       params.require(:negociator).permit(:first_name, :last_name, :companies_id)
+       params.require(:negociator).permit(:first_name, :last_name, :company_id)
     end
 
     def check_authorization
       company = Company.find_by_id(params[:company_id])
       if (company.id != current_company.id)
-        redirect_to companies_path, alert: "Vous n'avez pas les droits requis pour cette action"
+        redirect_to company_path(current_company.id), alert: "Vous n'avez pas les droits requis pour cette action"
       end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_04_125739) do
+ActiveRecord::Schema.define(version: 2018_06_27_115023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,21 +58,17 @@ ActiveRecord::Schema.define(version: 2018_07_04_125739) do
     t.string "cover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "negociators_id"
-    t.bigint "properties_id"
-    t.integer "role", default: 1
+    t.integer "role", default: 0
     t.index ["email"], name: "index_companies_on_email", unique: true
-    t.index ["negociators_id"], name: "index_companies_on_negociators_id"
-    t.index ["properties_id"], name: "index_companies_on_properties_id"
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
 
   create_table "negociators", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
+    t.bigint "company_id"
     t.boolean "visibility"
-    t.bigint "companies_id"
-    t.index ["companies_id"], name: "index_negociators_on_companies_id"
+    t.index ["company_id"], name: "index_negociators_on_company_id"
   end
 
   create_table "properties", force: :cascade do |t|
@@ -84,11 +80,11 @@ ActiveRecord::Schema.define(version: 2018_07_04_125739) do
     t.date "compromis_date"
     t.string "address"
     t.integer "price"
+    t.bigint "company_id"
+    t.bigint "negociator_id"
     t.boolean "fake"
-    t.bigint "negociators_id"
-    t.bigint "companies_id"
-    t.index ["companies_id"], name: "index_properties_on_companies_id"
-    t.index ["negociators_id"], name: "index_properties_on_negociators_id"
+    t.index ["company_id"], name: "index_properties_on_company_id"
+    t.index ["negociator_id"], name: "index_properties_on_negociator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -114,9 +110,7 @@ ActiveRecord::Schema.define(version: 2018_07_04_125739) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "companies", "negociators", column: "negociators_id"
-  add_foreign_key "companies", "properties", column: "properties_id"
-  add_foreign_key "negociators", "companies", column: "companies_id"
-  add_foreign_key "properties", "companies", column: "companies_id"
-  add_foreign_key "properties", "negociators", column: "negociators_id"
+  add_foreign_key "negociators", "companies"
+  add_foreign_key "properties", "companies"
+  add_foreign_key "properties", "negociators"
 end

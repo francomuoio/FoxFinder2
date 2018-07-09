@@ -7,7 +7,9 @@ validates :mandat_date, presence: true
 validates :compromis_date, presence: true
 validates :address, presence: true
 validates :price, presence: true
-validates :negociators_id, presence: true
-validates :companies_id, presence: true
+validates :negociator_id, presence: true
+validates :company_id, presence: true
 
+has_one :negociator
+belongs_to :company
 end

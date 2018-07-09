@@ -1,0 +1,16 @@
+<%= simple_form_for(@company, as: :company, method: params[:method], url: company_registration_path) do |f| %>
+<%= f.input :company_name, required: true, autofocus: true, label: "Nom de l'agence" %>
+<%= f.input :manager_first_name, required: true, autofocus: true, label: "Prénom du manager" %>
+<%= f.input :manager_last_name, required: true, autofocus: true, label: "Nom du manager" %>
+<%= f.input :email, required: true, autofocus: true, label: "Email" %>
+<%= f.input :pro_card_nbr, required: true, autofocus: true, label: "Numéro de carte professionnelle" %>
+<%= f.input :phone, required: true, autofocus: true, label: "Téléphone" %>
+<%= f.input :address, :input_html =>{:id => 'address'}, required: true, autofocus: true, label: "Adresse" %>
+<%= f.input :siret, required: true, autofocus: true, label: "SIRET" %>
+<%= f.text_area :description, required: true, autofocus:true, label: "Description de l'agence" %>
+<%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), label: "Mot de passe" %>
+<%= f.input :password_confirmation, required: true, label: "Confirmer votre mot de passe" %>
+<%= f.button :submit, (params[:method] == "post") ? "S'inscrire" : "Edit", class: "btn btn-danger btn-block" %>
+<%= render "devise/shared/links" %>
+<% end %>
+© 2017, FoxFinder

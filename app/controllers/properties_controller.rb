@@ -6,7 +6,7 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.where(companies_id: current_company.id)
+    @properties = Property.where(company: current_company.id)
   end
 
   # GET /properties/1
@@ -17,12 +17,12 @@ class PropertiesController < ApplicationController
   # GET /properties/new
   def new
     @property = Property.new
-    @negociator = Negociator.where(companies_id: current_company.id)
+    @negociator = Negociator.where(company_id: current_company.id)
   end
 
   # GET /properties/1/edit
   def edit
-    @negociator = Negociator.where(companies_id: current_company.id)
+    @negociator = Negociator.where(company_id: current_company.id)
   end
 
   # POST /properties
@@ -35,6 +35,7 @@ class PropertiesController < ApplicationController
         format.html { redirect_to company_properties_path, notice: 'Property was successfully created.' }
         format.json { render :show, status: :created, location: @property }
       else
+        Rails.logger.debug(@property.errors.full_messages)
         format.html { redirect_to company_properties_path, alert: 'Property creation failed.' }
         format.json { render json: @property.errors, status: :unprocessable_entity }
       end
@@ -73,13 +74,13 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-       params.require(:property).permit(:property_type, :property_nbr, :property_date, :mandat_type, :mandat_date, :compromis_date, :address, :price, :negociators_id, :companies_id)
+       params.require(:property).permit(:property_type, :property_nbr, :property_date, :mandat_type, :mandat_date, :compromis_date, :address, :price, :negociator_id, :company_id)
     end
 
     def check_authorization
       company = Company.find_by_id(params[:company_id])
       if (company.id != current_company.id)
-        redirect_to companies_path, alert: "Vous n'avez pas les droits requis pour cette action"
+        redirect_to company_path(current_company.id), alert: "Vous n'avez pas les droits requis pour cette action"
       end
     end
 end
