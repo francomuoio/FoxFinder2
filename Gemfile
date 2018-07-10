@@ -19,7 +19,7 @@ gem 'webpacker'
 gem "jquery-rails"
 gem 'jquery-ui-rails'
 
-
+gem 'activeadmin'
 
 # gems for pictures upload
 gem "attachinary"

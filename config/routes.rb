@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :companies, path: 'company', controllers: {
    confirmations: 'companies/confirmations',
    registrations: 'companies/registrations',
