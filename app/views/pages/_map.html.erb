@@ -1,0 +1,70 @@
+<% content_for(:after_js) do %>
+			<%= javascript_tag do %>
+			$(document).ready(function() {
+			var handler = Gmaps.build('Google', { markers: { maxRandomDistance: 12 }});
+			handler.buildMap({provider: {scrollwheel: false, styles: [
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "stylers": [
+      {
+        "weight": 2.5
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+]}, internal: { id: 'map' } }, function() {
+			markers = handler.addMarkers(<%= raw @hash.to_json %>);
+
+			agences = handler.addMarkers(<%= raw @hashagences.to_json %>);
+			loc = handler.addMarkers([
+    {
+      lat: <%= Geocoder.coordinates(params[:location]).first %>,
+      lng: <%= Geocoder.coordinates(params[:location]).last %>,
+      picture: {
+        url: "<%=ActionController::Base.helpers.asset_path("markers/loc32.png")%>",
+        width:  12,
+        height: 12
+      },
+			infowindow: "<strong>Votre bien</strong>"
+    }
+  ]);
+
+	var circles = handler.addCircles(
+    [{ lat: <%= Geocoder.coordinates(params[:location]).first %>, lng: <%= Geocoder.coordinates(params[:location]).last %>, radius: 1000 }],
+    { strokeColor: '#F96332', fillOpacity: 0.10, fillColor: "#F96332"}
+  );
+			handler.bounds.extendWith(markers, agences, circles, loc);
+			<!-- handler.bounds.extendWith(agences); -->
+			handler.fitMapToBounds();
+      handler.map.centerOn(<%= Geocoder.coordinates(params[:location]) %>);
+      handler.getMap().setZoom(14);
+
+});
+});
+<% end %>
+<% end %>

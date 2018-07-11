@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum role: [:free_company, :premium_company, :admin]
+  enum role: [:free_company, :premium_company]
   after_initialize :set_default_role, :if => :new_record?
 
   def set_default_role
@@ -13,5 +13,5 @@ class Company < ApplicationRecord
 
   has_many :negociators
   has_many :properties
-
+  has_one :siege_company, :class_name => 'Company', :foreign_key => "siege_id"
 end

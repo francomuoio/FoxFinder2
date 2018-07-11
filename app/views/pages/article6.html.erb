@@ -1,0 +1,96 @@
+<%= render 'shared/navbar' %>
+<div class="fondgris">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 picshowmobile">
+      <div class="col-xs-12 col-sm-4">
+        <div class="compareruneagence">
+          <h2 class="text-center">Les partenaires FoxFinder ont vendus plus de 1000 biens sur la métropole lilloise !</h2>
+          <div class="text-center margin-top margin-foxfinder">
+            <%= image_tag "logo.png", height: 100, id: "logo", class: "text-center" %>
+          </div>
+          <div class="margin-foxfinder-bouton text-center">
+            <%= link_to "Trouver mon agence GRATUITEMENT", recherche_adresse_path, class: 'bouton-spécial-home-foxfinder-blog'%>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-8">
+      <div class="fond-article">
+        <div class="titre-article">
+          <h1 style="font-size: 32px;">
+            <strong>Les 5 maisons les plus chères de France</strong>
+          </h1>
+        </div>
+          <h2 class="text-center" style="font-size: 22px;"><strong>5) Villa de Vincent Bolloré, Saint-Tropez - 30 millions d’euros</strong></h2>
+          <div class="text-center photo-mobile">
+            <%= image_tag "imageblog/bolloree.jpg", height: 300, id: "logo", class: "text-center" %>
+          </div>
+          <div class="margin-blog">
+            <p>La cinquième place de ce classement est occupée par la propriété de la 13e fortune de France. Construite sur un grand parc de 4 000 m² dans la Baie des canoubiers et comptabilisant au total plus de 450 m², la villa de Vincent Bolloré se caractérise comme une résidence luxueuse et apaisante. Cette propriété, estimée à 30 millions d’euros, est loin d’être la seule de la famille Bolloré, qui en comptabilise plusieurs à travers la France.
+            </p>
+          </div>
+          <h2 class="text-center" style="font-size: 22px;"><strong>4) La mandala, Saint-Tropez - 45 millions d’euros</strong></h2>
+          <div class="text-center photo-mobile">
+            <%= image_tag "imageblog/tapie.png", height: 300, id: "logo", class: "text-center" %>
+          </div>
+          <div class="margin-blog">
+          <p>À Saint-Tropez dans le Var, cette villa est connue, car elle est la propriété de Bernard Tapie. Connu pour avoir bénéficié d’une somme de 403 millions d’euros lors de la procédure d’arbitrage qui l'opposait au crédit Lyonnais dans l’affaire Adidas. Cette somme lui a permis de faire l'acquisition en 2012 de cette luxueuse bâtisse construite sur 2 hectares et comptabilisant au total 600 m² habitable. Avec piscine et un accès direct à la plage des Graniers. Mais le plaisir n’aura été que de courte durée, car l’année suivante il se fait saisir le bien estimé à une valeur de 48 millions d’euros.
+          </p>
+          </div>
+          <h2 class="text-center" style="font-size: 22px;"><strong>3) Le château Louis, Louveciennes - 275 millions d’euros</strong></h2>
+          <div class="text-center photo-mobile">
+            <%= image_tag "imageblog/chateaulouis.jpg", height: 300, id: "logo", class: "text-center" %>
+          </div>
+          <div class="margin-blog">
+          <p>Ce château situé dans les Yvelines et bâtis sur 23 hectares, comptabilisant au total 5 000 m² habitable n’a jamais été la résidence secondaire du roi soleil. Même si son architecture respecte à la perfection le style du 18e siècle, il n’a pas encore fêté son 15e anniversaire. En effet, la construction de cette bâtisse a démarré en 2008.
+D’un point de vue confort intérieur, le château répond à tous les besoins modernes de ses occupants. Avec une salle de cinéma, une cave à vin ou encore un aquarium géant. Cette bâtisse se caractérise donc comme un voyage temporel permanent entre l’élégance du 18e siècle et la modernité du 21e. Le château a dernièrement été vendu pour la somme de 275 millions d’euros et prend donc la troisième place de notre classement.
+
+          </p>
+          </div>
+          <h2 class="text-center" style="font-size: 22px;"><strong>2) Villa Leopolda, Villefranche-sur-Mer - $525 millions</strong></h2>
+          <div class="text-center photo-mobile">
+            <%= image_tag "imageblog/maisonchere2.jpg", height: 300, id: "logo", class: "text-center" %>
+          </div>
+          <div class="margin-blog">
+          <p>Dans les hauteurs de Villefranche, se trouve une villa offrant aux occupants une vue panoramique sur la méditerranée. Construite sur un domaine de 8 hectares très arboré, cette villa possède un charme à la Française nécessitant plus de 50 jardiniers pour entretenir tout le domaine. Cette villa est un monument historique. En 1902, le roi de Belgique Léopold fait l’acquisition du terrain pour un franc symbolique et y fait construire une villa qu’il baptisa Leopolda. La bâtisse fut ensuite transformée par Albert Premier de Belgique en hôpital. En 1929 Ogden Codman, architecte, repense entièrement l’architecture du bâtiment pour lui donner les dimensions d’aujourd’hui. Aujourd’hui, la villa appartient à Lily Safra femme d’un richissime homme d’affaires libanais.
+          </p>
+          </div>
+          <h2 class="text-center" style="font-size: 22px;"><strong>1) La villa Le Cèdre, Le Cap Ferrat - 1 milliard de dollars</strong></h2>
+          <div class="text-center photo-mobile">
+            <%= image_tag "imageblog/villa1.jpg", height: 300, id: "logo", class: "text-center" %>
+          </div>
+          <div class="margin-blog">
+          <p>Cette villa est la maison la plus chère de France en étant évaluée à plus d’1 milliard de dollars. Située sur le Cap Ferrat dans les Alpes-Maritimes. La villa bâtie sur 14 hectares, compte 10 chambres, un jardin d’hiver, une chapelle, une écurie, une conciergerie et un jardin d’agrément. Construite en 1870 par l’architecte Sébastien-Marcel Biasini, cette bâtisse a subi plusieurs remaniements. La villa à hébergé plusieurs grandes personnalités, notamment le maire de Villefranche en 1972, puis le Roi Leopold II qui s’en est essentiellement servi pour loger sa maîtresse. Le bâtiment appartient aujourd’hui à la société Marnier, et est référencé dans l'inventaire général du patrimoine culturel.
+          </p>
+          </div>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-4">
+<div class="enseblepub">
+        <div class="compareruneagence">
+          <h2 class="text-center" style="font-size: 22px;">Les partenaires FoxFinder ont vendus plus de 1000 biens sur la métropole lilloise !</h2>
+          <div class="text-center margin-top margin-foxfinder">
+            <%= image_tag "logo.png", height: 100, id: "logo", class: "text-center" %>
+          </div>
+          <div class="margin-foxfinder-bouton text-center">
+            <%= link_to "Trouver mon agence GRATUITEMENT", recherche_adresse_path, class: 'bouton-spécial-home-foxfinder-blog'%>
+          </div>
+        </div>
+
+    <div class="text-center facebookcard">
+          <div class="fb-page" data-href="https://www.facebook.com/Foxfinder.fr/" data-tabs="timeline" data-height="70" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/Foxfinder.fr/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Foxfinder.fr/">FoxFinder</a></blockquote></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

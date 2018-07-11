@@ -1,0 +1,756 @@
+<div class="resizenav">
+  <%= render 'shared/navbar' %>
+</div>
+<div class="resizepro resizeproiphone">
+
+  <div class="banner-pro" style="background-image: linear-gradient(-225deg, rgba(102, 102, 102, 0.3) 0%, rgba(102, 102, 102, 0.3) 50%), url('<%= image_path "pro.jpg" %>');">
+    <div class="banner-content">
+      <div class="ensemble">
+        <div class="pro-title">
+          <h2>
+            <b>Prospectez moins, vendez plus !</b>
+          </h2>
+        </div>
+        <div class="pro-timeline">
+          <h2 style="font-size: 25px;">
+            Nous proposons vos services à des clients vendeurs qualifiés !
+          </h2>
+        </div>
+        <br>
+        <div class="pro-bouton">
+          <div class="pichidemobile">
+            <%= link_to t(".sign_in", default: "Se connecter"), new_user_session_path, class: "bouton-spécial-home-foxfinder" %>
+            <%= link_to t(".sign_up", default: "S'inscrire"), new_user_registration_path, class: "bouton-spécial-home-foxfinder" %>
+          </div>
+        </div>
+        <div class="picshowmobile">
+          <h2>
+            Connectez vous depuis un ordinateur
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container pro-avantages">
+    <div class="row avantages-title">
+      <h2 class="text-center titre-pro-element" id="proavantages" style="font-size: 28px;">
+        Nos Avantages
+      </h2>
+      <br>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12 col-sm-3">
+        <img src="<%= image_path "pro/time.png" %>" alt="gagnez du temps" class="finderfeature">
+        <div class="pro-title-1">
+        <p>
+          <b>Gagnez du temps</b>
+        </p>
+        </div>
+        <p>
+          FoxFinder prospecte pour vous
+        </p>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <img src="<%= image_path "pro/perf.png" %>" alt="performances" class="finderfeature">
+        <div class="pro-title-1">
+          <p>
+            <b>Soyez plus performant</b>
+          </p>
+        </div>
+        <div class="pro-desc-1">
+          <p>
+            En analysant vos statistiques sur votre tableau de bord en temps réel
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <img src="<%= image_path "pro/multiplier.png" %>" alt="multiplier" class="finderfeature">
+        <div class="pro-title-1">
+          <p>
+            <b>Multipliez vos ventes</b>
+          </p>
+        </div>
+        <div class="pro-desc-1">
+          <p>
+            En obtenant de nouveaux mandats de vente qualitatifs
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-3">
+        <img src="<%= image_path "pro/ads.png" %>" alt="visibilité" class="finderfeature">
+        <div class="pro-title-1">
+          <p class="info-title">
+            <b>Gagnez en visibilité</b>
+          </p>
+        </div>
+        <div class="pro-desc-1">
+          <p>
+            Auprès d'une communauté de vendeurs
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pro-ccm ">
+    <div class="row avantages-title">
+      <h2 class="text-center titre-pro-element" id="ccm" style="font-size: 28px;">
+        Comment ça marche ?
+      </h2>
+      <br>
+    </div>
+    <div class="row text-center">
+      <div class="col-xs-12 col-sm-4">
+        <img src="<%= image_path "pro/woman.png" %>" alt="trouver agence immobilière" class="finderfeature">
+        <div class="pro-desc-ccm">
+          <p>
+            Rentrez les informations de vos dernières ventes
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 color-home-features">
+        <img src="<%= image_path "pro/secteur.png" %>" alt="transparent" class="finderfeature">
+        <div class="pro-desc-ccm">
+          <p>
+            Nous déterminons les quartiers et types de biens sur lesquels vous êtes le plus présent
+          </p>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-4 color-home-features">
+        <img src="<%= image_path "pro/rate.png" %>" alt="précision" class="finderfeature">
+        <div class="pro-desc-ccm">
+          <p>
+            Nous proposons vos services à des vendeurs qualifiés
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container pro-demo section-home">
+    <div class="row">
+      <h2 class="text-center titrepro" style="font-size: 28px;">
+        <b>Mise en relation avec un vendeur</b>
+      </h2>
+      <div class="col-xs-12 col-sm-5 col-sm-offset-1 procards picshowmobile">
+        <%= image_tag "pro/proficard.png", width: '100%' %>
+      </div>
+      <div class="col-xs-12 col-sm-4">
+        <div class="relation-text">
+          <ul>
+            <li>
+              <p>
+                Nous proposons vos services à des vendeurs qualifiés
+              </p>
+            </li>
+            <br>
+            <li>
+              <p>
+                Obtenez des mandats qualitatifs
+              </p>
+            </li>
+            <br>
+            <li>
+              <p>
+              Laissez FoxFinder prospecter pour vous
+              </p>
+            </li>
+            <br>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-xs-12 col-sm-5 col-sm-offset-1 procards pichidemobile">
+          <%= image_tag "pro/proficard.png", width: '100%', id: "pro-graph-photo" %>
+      </div>
+    </div>
+
+    <hr style="color: #7E7D7D; margin-top: 4%; margin-bottom: 2%; border-width: 1px; border-color: #7E7D7D; margin-right: 5%; margin-left: 5%;">
+
+    <div class="row">
+      <h2 class="text-center titrepro titreespacestat" style="font-size: 28px;">
+        <b>
+          Espace statistiques
+        </b>
+      </h2>
+      <h2 class="picshowmobile">
+        Votre activité dans sa globalité
+      </h2>
+      <div class="col-xs-12 col-sm-8 photodash">
+        <%= image_tag "pro/dashboard.png", height: '100%', width: '100%' %>
+      </div>
+      <div class="col-xs-12 col-sm-3 board-text">
+        <div class="pro-tableau-stats">
+        <h2 class="pichidemobile text-center" style="font-size: 22px">
+          <b>
+            Votre activité dans sa globalité
+          </b>
+        </h2>
+        <br>
+        <br>
+          <ul>
+            <li>
+              <p>
+                Un tableau de bord personnalisé
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Une vision générale de votre activité
+                </p>
+            </li>
+
+            <li>
+              <p>
+                Obtenez des informations précises
+              </p>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <hr style="color: #E0E0E0; margin-top: 4%; margin-bottom: 4%; margin-right: 15%; margin-left: 15%;">
+
+    <div class="row">
+      <h2 class="picshowmobile" style="font-size: 28px;">
+        Vos performances en quelques clics
+      </h2>
+      <div class="col-xs-12 col-sm-6 picshowmobile">
+        <%= image_tag "pro/fstat.png", height: '100%', width: '100%' %>
+      </div>
+      <div class="text-center margin-class-stats">
+        <h2 class="pichidemobile" style="font-size: 22px">
+          <b>Vos performances en quelques clics</b>
+        </h2>
+      </div>
+      <div class="col-xs-12 col-sm-5 perf-text">
+        <ul>
+          <li>
+            <p>
+              Obtenez d'un clic l'évolution détaillée de votre activité
+            </p>
+          </li>
+          <li>
+            <p>
+              Analysez la tendance moyenne des performances de la concurrence
+            </p>
+          </li>
+          <li>
+            <p>
+              Comparez vos performances entre mandats exclusifs et mandats simples
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-6 pichidemobile">
+        <%= image_tag "pro/fstat.png", height: '100%', width: '80%', id: "courbe-pro" %>
+      </div>
+    </div>
+
+    <hr style="color: #E0E0E0; margin-top: 4%; margin-bottom: 4%; border-width: 1px; border-color: #E0E0E0; margin-right: 15%; margin-left: 15%;">
+
+    <div class="row">
+      <h2 class="picshowmobile" style="font-size: 28px;">
+        Une précision optimale
+      </h2>
+      <div class="text-center">
+        <h2 class="pichidemobile" style="font-size: 22px">
+          <b>
+            Une précision optimale
+          </b>
+        </h2>
+      </div>
+      <div class="col-xs-12 col-sm-6 photodash pichidemobile">
+        <%= image_tag "pro/filtres.png", height: '100%', width: '80%', id: "pro-filtre-photo" %>
+      </div>
+
+      <div class="col-xs-12 col-sm-5">
+        <div class="liste-filtre-pro">
+          <ul>
+            <li>
+              <p>
+                Personnalisez vos statistiques du plus large au plus précis
+              </p>
+            </li>
+            <li>
+              <p>
+                Déduisez-en vos points forts
+              </p>
+            </li>
+            <li>
+              <p>
+                Analysez les statistiques de chaque négociateur
+              </p>
+            </li>
+            <br>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!--  <div class="container tarifs" id="proinfo">
+    <div class="row" style="margin-right: 0px;">
+      <div class="dezoomtab">
+        <h2 class="text-center size-subtitle-home" id="tarif">
+          Nos offres
+        </h2>
+        <div class="messagetab">
+          <h2 style="font-style: italic; font-size: 16px">
+            Pour consulter nos offres passez en mode Paysage
+          </h2>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 mobileHide mobileShow">
+          <div style="overflow-x:auto;">
+            <table class="table tabtarif">
+              <thead>
+                <tr>
+                  <th style="width: 32%;"></th>
+                  <th style=" color: black">
+                    <h2 class="">
+                      Offre Gratuite
+                    </h2>
+                  </th>
+                  <th style="color: black">
+                    <h2 class="">
+                      Offre Apporteur d'affaires
+                    </h2>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" style="color: black; text-align: left;">
+                    <h2>
+                      Profil en ligne
+                    </h2>
+                  </th>
+                  <td style="color: black">
+                    <i class="fa fa-check fa-3x" aria-hidden="true"></i>
+                  </td>
+                  <td style="color: black">
+                    <i class="fa fa-check fa-3x" aria-hidden="true"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black; text-align: left;">
+                    <h2>
+                      Espace statistiques
+                    </h2>
+                  </th>
+                  <td style="color: black">
+                    <h2>
+                      Partiel
+                    </h2>
+                  </td>
+                  <td style="color: black">
+                    <h2>
+                      Complet
+                    </h2>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black;  border-color: #E0DFDE; border-width: 2px; text-align: left; font-style: italic;">
+                    <h4 style="margin-left: 10%">
+                      Tableau de bord
+                    </h4>
+                  </th>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black;  border-color: #E0DFDE; border-width: 2px; text-align: left; font-style: italic;">
+                    <h4 style="margin-left: 10%">
+                      Evolution générale
+                    </h4>
+                  </th>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black;  border-color: #E0DFDE; border-width: 2px; text-align: left; font-style: italic;">
+                    <h4 style="margin-left: 10%">Evolution concurrence, mandat simple, mandat exclusif</h4>
+                  </th>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-times fa-2x" aria-hidden="true" style="color: #7E7D7D"></i>
+                  </td>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black;  border-color: #E0DFDE; border-width: 2px; text-align: left; font-style: italic;">
+                    <h4 style="margin-left: 10%">
+                      Détail des ventes par type et par négociateur
+                    </h4>
+                  </th>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-times fa-2x" aria-hidden="true" style="color: #7E7D7D"></i>
+                  </td>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black;  border-color: #E0DFDE; border-width: 2px; text-align: left; font-style: italic;">
+                    <h4 style="margin-left: 10%">Délai et prix de vente moyen par négociateur</h4>
+                  </th>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-times fa-2x" aria-hidden="true" style="color: #7E7D7D"></i>
+                  </td>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black;  border-color: #E0DFDE; border-width: 2px; text-align: left; font-style: italic;">
+                    <h4 style="margin-left: 10%">
+                      Accès aux filtres personnalisables
+                    </h4>
+                  </th>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-times fa-2x" aria-hidden="true" style="color: #7E7D7D"></i>
+                  </td>
+                  <td style="color: black;  border-color: #E0DFDE; border-width: 2px;">
+                    <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row" style="color: black; text-align: left;">
+                    <h2>
+                      Proposition client vendeur
+                    </h2>
+                  </th>
+                  <td style="color: black">
+                    <h2>
+                      Non
+                    </h2>
+                  </td>
+                  <td style="color: black">
+                    <h2>
+                      Oui
+                    </h2>
+                  </td>
+                </tr>
+                <tr>
+                  <th style="color: black"></th>
+                  <th style="color: black"></th>
+                  <th style="color: black"></th>
+                  <!-- <th><button type="button" class="btn btn-fill btn-danger" data-toggle="modal" data-target="#contactpipe">Nous contacter</button></th>
+                  <th><button type="button" class="btn btn-fill btn-danger" data-toggle="modal" data-target="#contactpipe">Nous contacter</button></th> -->
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container couleur-tarification section-home">
+    <div class="row">
+        <h2 class="text-center size-subtitle-home" id="tarif" style="font-size: 28px;">
+          Nos offres
+        </h2>
+      <div class="tableu-tarif">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-2 mobileHide mobileShow">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>
+                <h2 style="font-size: 25px;">
+                  Offre Gratuite
+                </h2>
+              </th>
+              <th>
+                <h2 style="font-size: 25px;">
+                  Offre Apporteur d'affaires
+                </h2>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+             <tr>
+              <th>
+                <h2 style="font-size: 25px;">
+                  Profil en ligne
+                </h2>
+              </th>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+            </tr>
+             <tr>
+                <th>
+                  <h2 style="font-size: 25px;">
+                    Espace statistiques
+                  </h2>
+                </th>
+                <td>
+                  <h2 style="font-size: 25px;">
+                    Partiel
+                  </h2>
+                </td>
+                <td>
+                  <h2 style="font-size: 25px;">
+                    Complet
+                  </h2>
+                </td>
+              </tr>
+                <tr>
+                <th>
+                  <h2 style="font-size: 25px;">
+                    Tableau de bord
+                  </h2>
+                </th>
+                <td>
+                  <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                </td>
+                <td>
+                  <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                </td>
+              </tr>
+              <tr>
+              <th>
+                <p>
+                  Evolution générale
+                </p>
+              </th>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>
+                  Evolution concurrence, mandat simple, mandat exclusif
+                </p>
+              </th>
+              <td>
+                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+              </td>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                <p>
+                  Détail des ventes par type et par négociateur
+                </p>
+              </th>
+              <td>
+                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+              </td>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <p>
+                  Délai et prix de vente moyen par négociateur
+                </p>
+              </th>
+              <td>
+                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+              </td>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <p>
+                  Accès aux filtres personnalisables
+                </p>
+              </th>
+              <td>
+                <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+              </td>
+              <td>
+                <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                <h2 style="font-size: 25px;">
+                  Proposition client vendeur
+                </h2>
+              </th>
+              <td>
+                <h2 style="font-size: 25px;">
+                  Non
+                </h2>
+              </td>
+              <td>
+                <h2 style="font-size: 25px;">
+                  Oui
+                </h2>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="contactpipe" role="dialog" data-backdrop="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div id="wufoo-qrew98915s08ec">
+            Fill out my <a href="https://wako94.wufoo.com/forms/qrew98915s08ec">online form</a>.
+          </div>
+          <div id="wuf-adv" style="font-family:inherit;font-size: small;color:#a7a7a7;text-align:center;display:block;">Online contact and registration forms from <a href="http://www.wufoo.com">Wufoo</a>.</div>
+          <script type="text/javascript">var qrew98915s08ec;(function(d, t) {
+            var s = d.createElement(t), options = {
+              'userName':'wako94',
+              'formHash':'qrew98915s08ec',
+              'autoResize':true,
+              'height':'436',
+              'async':true,
+              'host':'wufoo.com',
+              'header':'show',
+              'ssl':true};
+              s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+              s.onload = s.onreadystatechange = function() {
+                var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+                try { qrew98915s08ec = new WufooForm();qrew98915s08ec.initialize(options);qrew98915s08ec.display(); } catch (e) {}};
+                var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+              })(document, 'script');</script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- <div id="carousel">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="padding-top: 180px; padding-bottom: 180px;"> -->
+      <!-- <div class="carousel slide" data-ride="carousel">
+
+
+      <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+
+    <div class="carousel-inner">
+    <div class="item active">
+    <div class="col-xs-12 text-center">
+    <div class="col-xs-12 col-sm-2 col-sm-offset-1 text-center">
+    <img class="testimonial-avatar" src="<%= image_path "pdefaut.png" %>" alt="Franco Muoio"/>
+    <!-- <h2>François Muoio</h2>
+    <h5>Agent Immobilier</h5>
+    <h6>A Bouchain</h6> --
+    <h2>*</h2>
+    <h5>*</h5>
+    <h6>*</h6>
+  </div>
+  <div class="col-xs-12 col-sm-6 col-sm-offset-2 text-center testimonial-text">
+  <h2>
+  <blockquote>
+  FoxFinder est un exelent moyen pour acquérir de nouveaux mandats de ventes qualitatifs
+</blockquote>
+
+</h2>
+</div>
+</div>
+</div>
+<div class="item">
+<div class="col-xs-12 text-center">
+<div class="col-xs-12 col-sm-2 col-sm-offset-1 text-center">
+<img class="testimonial-avatar" src="<%= image_path "pdefaut.png" %>" alt="Franco Muoio"/>
+<!-- <h2>François Muoio</h2>
+<h5>Agent Immobilier</h5>
+<h6>A Bouchain</h6> --
+<h2>*</h2>
+<h5>*</h5>
+<h6>*</h6>
+</div>
+<div class="col-xs-12 col-sm-6 col-sm-offset-2 text-center testimonial-text">
+<h2>
+<blockquote>
+L'équipe de Foxfinder est disponible et très professionnel !
+</blockquote>
+
+</h2>
+</div>
+</div>
+</div>
+<div class="item">
+<div class="col-xs-12 text-center">
+<div class="col-xs-12 col-sm-2 col-sm-offset-1 text-center">
+<img class="testimonial-avatar" src="<%= image_path "pdefaut.png" %>" alt="Franco Muoio"/>
+<!-- <h2>François Muoio</h2>
+<h5>Agent Immobilier</h5>
+<h6>A Bouchain</h6> --
+<h2>*</h2>
+<h5>*</h5>
+<h6>*</h6>
+</div>
+<div class="col-xs-12 col-sm-6 col-sm-offset-2 text-center testimonial-text">
+<h2>
+<blockquote>
+L'espace statistique m'est devenu indispendable !
+</blockquote>
+
+</h2>
+</div>
+</div>
+</div>
+</div>
+
+<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+<span class="fa fa-angle-left fa-5x"></span>
+</a>
+<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+<span class="fa fa-angle-right fa-5x"></span>
+</a>
+</div> -->
+<!-- </div>
+</div> -->
+
+<% content_for(:after_js) do %>
+<%= javascript_tag do %>
+$('.carousel').carousel({
+  interval: 2000
+});
+<% end %>
+<% end %>
+</div>
+</div>
+
+
+<div class="resizefooter">
+  <%= render 'shared/footer' %>
+</div>

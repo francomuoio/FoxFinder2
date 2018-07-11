@@ -1,0 +1,54 @@
+<% content_for(:after_js) do %>
+			<%= javascript_tag do %>
+			$(document).ready(function() {
+			var handler = Gmaps.build('Google', { markers: { maxRandomDistance: 12 }});
+			handler.buildMap({provider: {scrollwheel: false, styles: [
+  {
+    "featureType": "poi",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "stylers": [
+      {
+        "weight": 2.5
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry.stroke",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  }
+]}, internal: { id: 'map' } }, function() {
+			loc = handler.addMarkers([
+    {
+      lat: 50.632711,
+      lng:  3.021316,
+    }
+  ]);
+
+			handler.fitMapToBounds();
+			handler.map.centerOn([50.632711, 3.021316]);
+      handler.getMap().setZoom(15);
+});
+});
+<% end %>
+<% end %>

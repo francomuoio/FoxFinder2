@@ -1,0 +1,243 @@
+<%= render 'shared/navbar' %>
+<div id="fondblanc">
+
+<div class="row">
+  <div class="col-xs-12 col-sm-7" style="overflow-y: auto; height: 93vh">
+    <br>
+    <% if @companies.count == 1  %>
+    <h4 class="text-center"><strong>Pour vendre votre bien nous vous conseillons cette agence :</strong></h4>
+    <% else %>
+    <h4 class="text-center"><strong>Pour vendre votre bien nous vous conseillons ces agences :</strong></h4>
+    <% end %>
+        <% délais_exclus = [] %>
+        <% délais_general = [] %>
+        <% nombre_de_ventes = [] %>
+      <% @companies.order("delai ASC").limit(3).each do |element| %>
+        <% nombre_de_ventes << element.area_ventes.round if element.area_ventes != nil && element.area_ventes != 0 %>
+        <% délais_general << element.delai.round if element.delai != nil && element.delai != 0 %>
+        <% délais_exclus << element.delai_exclu.round if element.delai_exclu != nil && element.delai_exclu != 0 %>
+      <% end %>
+        <% nombre_de_ventes.sort.reverse %>
+        <% délais_general.sort %>
+        <% délais_exclus.sort %>
+
+      <% @companies.order("delai ASC").limit(3).each do |u| %>
+
+        <% simples = [] %>
+        <% u.biens.where(mandat_type: "Simple").each do |b| %>
+          <% if b.delai != nil %>
+            <% simples << b.delai %>
+          <% end %>
+        <% end %>
+        <% exclus = [] %>
+        <% u.biens.where(mandat_type: "Exclusif").each do |b| %>
+          <% if b.delai != nil %>
+            <% exclus << b.delai %>
+          <% end %>
+        <% end %>
+        <% if u.biens.where(mandat_type: "Simple").size != nil &&  u.biens.where(mandat_type: "Simple").size != 0 && simples.sum != 0 && simples.sum != nil %>
+          <% res_simple = simples.sum / u.biens.where(mandat_type: "Simple").size %>
+            <% else %>
+          <% res_simple = 0 %>
+        <% end %>
+        <% if u.biens.where(mandat_type: "Exclusif").size != 0 && u.biens.where(mandat_type: "Exclusif").size != nil && exclus.sum != 0 && exclus.sum != nil %>
+          <% res_exclu = (exclus.sum.to_f / u.biens.where(mandat_type: "Exclusif").size.to_f) || 0 %>
+            <% else %>
+          <% res_exclu = 0 %>
+        <% end %>
+        <% if res_exclu != 0 %>
+          <% vendez = res_simple / res_exclu %>
+            <% else %>
+          <% vendez = 0 %>
+        <% end %>
+        <% [] << u.area_ventes %>
+        <% [] << u.delai %>
+        <% [] << u.delai_exclu %>
+        <div class="card-resultat-recherche-foxfinder">
+          <div class="contact-agence-recherche-foxfinder">
+            <div class="photo-agence-card-resultat">
+              <% if u.photo.present? %>
+                <%= cl_image_tag u.photo.path, height: 110, width: 110 %>
+              <% else %>
+                <%= image_tag 'avatar.png', height: 110, width: 110 %>
+              <% end %>
+
+            </div>
+
+              <h4><strong class="nom-agence"><%= u.agencie_name %></strong></h4>
+            <div class="agence-nom-resultat" style="margin-top: 10px">
+
+            <% if u.area_ventes != nil && u.area_ventes != 0 %>
+              <% if u.area_ventes == nombre_de_ventes.sort.reverse.first %>
+                  <!-- <p>médails <strong>nombre de ventes</strong></p> -->
+                <div class="popover__wrapper">
+                  <a href="#">
+                    <%= image_tag "m1.png", id: "logo-trophé" %>
+                  </a>
+                  <div class="push popover__content">
+                    <p class="popover__message">Meilleur en nombre de ventes</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+
+            <% if u.delai != nil && u.delai != 0 %>
+              <% if u.delai.round == délais_general.sort.first %>
+                <!-- <p>médails <strong>délais de ventes</strong></p> -->
+                <div class="popover__wrapper">
+                  <a href="#">
+                    <%= image_tag "m2.png", id: "logo-trophé" %>
+                  </a>
+                  <div class="push popover__content">
+                    <p class="popover__message">Meilleur en délais de vente</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+
+            <% if u.delai_exclu != nil && u.delai_exclu != 0 %>
+              <% if u.delai_exclu.round == délais_exclus.sort.first %>
+                <!-- <p>médails <strong>délais exlcus</strong></p> -->
+                <div class="popover__wrapper">
+                  <a href="#">
+                    <%= image_tag "m3.png", id: "logo-trophé" %>
+                  </a>
+                  <div class="push popover__content">
+                    <p class="popover__message">Meilleur en mandat exclusif</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+
+            </div>
+            <div class="text-center" style="margin-top: 20px;">
+              <%= link_to "Voir profil", user_path(u.id), target: "_blank", class: "bouton-spécial-home-foxfinder-pour-quentin" %>
+            </div>
+            <!-- <h3>Delai: <%= u.delai %></h3>
+            <h3>Delai Exclu: <%= u.delai_exclu %></h3>
+            <h3>Delai Simple: <%= u.delai_simple %></h3> -->
+          </div>
+          <div class="ensemble-card-perd-resultat-recherche">
+            <div class="card-perd-resultat-recherche">
+              <p class="text-center" id="couleur-spécial" ><%= u.area_ventes %></p>
+              <% if u.area_ventes > 1  %>
+                <p class="text-center"><%= params[:room_type]%>s vendus</p>
+                  <% else %>
+                <p class="text-center"><%= params[:room_type] %> vendu</p>
+              <% end %>
+            </div>
+            <div class="card-perd-resultat-recherche">
+              <p class="text-center" id="couleur-spécial" >
+
+                <% if u.delai != nil && u.delai != 0 %>
+
+                  <% if u.delai.round < 12 %>
+                  <%= u.delai.round %> semaine(s)
+                  <% else %>
+                  < 3 mois
+                  <% end %>
+                <% end %>
+
+
+              </p>
+              <p class="text-center">délai de vente</p>
+            </div>
+            <div class="card-perd-resultat-recherche">
+
+              <p class="text-center" id="couleur-spécial" >
+
+                <% if u.delai_exclu != nil && u.delai_exclu != 0 %>
+                  <% exclusité = exclus.sum.round / exclus.count.round %>
+                    <% if exclusité > 1 %>
+                      <%= exclusité %> semaines
+                        <% else %>
+                      <%= exclusité %> semaine
+                    <% end %>
+                    <% else %>
+                  Non indiqué
+                <% end %>
+              </p>
+              <p class="text-center">délai de vente <strong>mandat exclusif</strong></p>
+            </div>
+          </div>
+        </div>
+        <br>
+
+      <% end %>
+    </div>
+    <br>
+    <h4 class="text-center"><strong>Carte des ventes de votre secteur</strong></h4>
+    <div class="col-xs-12 col-sm-5">
+    <div id="map" style="width: 100%; height: 84vh;"></div>
+    <%= render 'map' %>
+    </div>
+</div>
+
+</div>
+
+<div class="modal show" id="myModalpin" role="dialog">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="titre-modal-spécial">
+        <h4 class="titre-modal-spécial"> Vérification téléphone</h4>
+      </div>
+      <div class="modal-body">
+        <div id="send-pin">
+          <p>Vous allez recevoir un code de confirmation au numéro ci-dessous</p><p class="text-center"><strong class="text-center">Est-ce le bon numéro ?  </strong></p>
+          <br>
+          <div class="text-center">
+          <% if params[:phone_form][0] == "0" %>
+            <% params[:phone_form].slice!(0) %>
+            <%  newnum = "+33" + params[:phone_form] %>
+          <% else %>
+            <% newnum = params[:phone_form] %>
+          <% end %>
+          <%= form_for PhoneNumber.new, remote: true do |f| %>
+          <div class="form-group">
+            <%= f.text_field :phone_number, value: newnum %>
+          </div>
+          </div>
+          <div class="text-center">
+          <%= f.submit "Envoyer", class: "boutonvérifinfo", id: 'send-pin-link' %>
+          </div>
+          <% end %>
+        </div>
+
+        <div id="verify-pin">
+          <h3>Entrer votre code de confirmation</h3>
+          <%= form_tag phone_numbers_verify_path, remote: true do |f| %>
+          <%= hidden_field_tag 'hidden_phone_number', '' %>
+          <div class="form-group">
+            <%= text_field_tag :pin %>
+          </div>
+          <%= submit_tag "Verifier", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+        <div id="status-box" class="alert alert-success">
+          <p id="status-message">Désolé, ce n'est pas le bon numéro</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+            <%= javascript_tag do %>
+    $(window).on('load',function(){
+        $("#fondblanc").addClass("hidden").delay(9000)
+        $('#myModalpin').modal('show');
+
+    });
+<% end %>
+<% end %>

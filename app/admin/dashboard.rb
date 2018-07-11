@@ -20,7 +20,7 @@ ActiveAdmin.register_page "Dashboard" do
                 li negociator.first_name + ' ' + negociator.last_name
               end
             end
-            ul "Bien :" do
+            ul "contrat :" do
               post.properties.map do |property|
                 li property.address
             end

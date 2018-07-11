@@ -12,4 +12,7 @@ validates :company_id, presence: true
 
 has_one :negociator
 belongs_to :company
+
+geocoded_by :address
+after_validation :geocode
 end

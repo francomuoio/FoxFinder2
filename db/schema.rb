@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_10_130614) do
+ActiveRecord::Schema.define(version: 2018_07_11_141952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,8 @@ ActiveRecord::Schema.define(version: 2018_07_10_130614) do
     t.string "pro_card_nbr"
     t.string "phone"
     t.string "company_type"
-    t.boolean "siege"
+    t.boolean "siege", default: false
+    t.bigint "siege_id"
     t.boolean "premium"
     t.string "website"
     t.text "description"
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_07_10_130614) do
     t.integer "role", default: 0
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+    t.index ["siege_id"], name: "index_companies_on_siege_id"
   end
 
   create_table "negociators", force: :cascade do |t|
@@ -114,6 +116,8 @@ ActiveRecord::Schema.define(version: 2018_07_10_130614) do
     t.bigint "company_id"
     t.bigint "negociator_id"
     t.boolean "fake"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["company_id"], name: "index_properties_on_company_id"
     t.index ["negociator_id"], name: "index_properties_on_negociator_id"
   end

@@ -1,0 +1,59 @@
+<%= render 'shared/navbar' %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="ensemble-recherche-pièces-foxfinder">
+        <div class="load_bar">
+          <p id="active-foxfinder">1</p>
+          <p id="active-foxfinder">2</p>
+          <p id="active-foxfinder">3</p>
+          <p id="non-active-foxfinder">4</p>
+        </div>
+        <div class="fond-page">
+          <div class="fond-formulaire">
+            <div class="title-form-foxfinder" >
+              <!-- <h3 id="number-recherche">3</h3> -->
+              <h3>Enfin, combien de pièces comporte votre bien ?</h3>
+            </div>
+            <div class="address-bar-foxfinder text-center">
+              <%= form_tag recherche_info_path, id: "address_input", method: :get, autocomplete: 'on' do %>
+                <%= hidden_field_tag :location, params[:location], {id: 'address', class: "namanyay-search-box", placeholder: 'Adresse du bien à vendre', :required => true} %>
+                <%= hidden_field_tag :room_type, params[:room_type], {class: "namanyay-search-box", :required => true} %>
+            </div>
+            <div class="text-center">
+              <div class="btn-group" data-toggle="buttons">
+                <label class="btn btn-danger" style="margin-right: 10px;">
+                  <input id="bien_nb_piece_true" name="nb_piece" type="radio" autocomplete="off" value="0"/> Aucune
+                </label>
+                <label class="btn btn-danger" style="margin-right: 10px;">
+                  <input id="bien_nb_piece_true" name="nb_piece" type="radio" autocomplete="off" value="1"/> 1
+                </label>
+                <label class="btn btn-danger" style="margin-right: 10px;">
+                  <input id="bien_nb_piece_true" name="nb_piece" type="radio" autocomplete="off" value="2"/> 2
+                </label>
+                <label class="btn btn-danger" style="margin-right: 10px;">
+                  <input id="bien_nb_piece_true" name="nb_piece" type="radio" autocomplete="off" value="3"/> 3
+                </label>
+                <label class="btn btn-danger" style="margin-right: 10px;">
+                  <input id="bien_nb_piece_true" name="nb_piece" type="radio" autocomplete="off" value="4"/> 4
+                </label>
+                <label class="btn btn-danger" style="margin-right: 10px;">
+                  <input id="bien_nb_piece_true" name="nb_piece" type="radio" autocomplete="off" value="5"/> 5 et +
+                </label>
+              </div>
+            </div>
+            <br>
+            <div class="text-center bouton-recherche-foxfinder" id="bouton-recherche-info-foxfinder">
+              <%= submit_tag "Suivant", id: "namanyay-search-btn-2" %>
+            </div>
+            <% end %>
+            <div class="interrogation-foxfinder" id="interrogation-info-foxfinder">
+              <p id="point-interrogation-recherche">?</p>
+              <p class="margin-right-1"><strong>nombre de pièces :</strong> nombre de pièces à vivre de plus de 9 m² hors cuisine et salle d'eau</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

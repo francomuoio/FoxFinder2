@@ -19,15 +19,19 @@ gem 'webpacker'
 gem "jquery-rails"
 gem 'jquery-ui-rails'
 
+gem 'pipedrive-ruby'
+
+#gem for admin backend
 gem 'activeadmin'
+
+# gem for gmap
+gem 'geocoder'
 
 # gems for pictures upload
 gem "attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 gem 'cloudinary'
-
-gem 'cancan'
 
 # gem for form
 gem 'simple_form'

@@ -1,0 +1,35 @@
+<div class="resizenav">
+  <%= render 'shared/navbar' %>
+</div>
+
+<div class="container"  style="width: 100%; height: 100vh; background-size: 100% 100%; background-image: linear-gradient(-225deg, rgba(102, 102, 102, 0.5) 0%, rgba(102, 102, 102, 0.5) 50%), url('<%= image_path "empty.jpg" %>');">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="ensemble-recherche-adresse-foxfinder">
+        <div class="fond-page">
+          <br>
+          <div class="fond-formulaire text-center">
+              <br>
+              <br>
+              <div>
+                <h3>Foxfinder n'est pas encore présent dans votre secteur</h3>
+                <br>
+                <h3>Vous serez informé dès que nous serons disponible dans votre quartier</h3>
+                <br>
+                <h3>A bientôt, l'équipe FoxFinder</h3>
+              </div>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <br>
+              <div>
+                 <%= link_to "Nouvelle recherche", recherche_adresse_path, class: "bouton-spécial-home-foxfinder"%>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
