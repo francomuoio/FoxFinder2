@@ -15,7 +15,7 @@
         <td><%= property.address %></td>
         <td><%= property.price %></td>
         <td><%= link_to 'Show', company_property_path(company_id: current_company.id, id: property.id) %></td>
-        <td><%= link_to 'Edit', edit_company_property_path(company_id: current_company.id, id: property.id), method: :patch %></td>
+        <td><%= link_to 'Edit', edit_company_property_path(company_id: current_company.id, id: property.id), method: :get %></td>
         <td><%= link_to 'Destroy', company_property_path(company_id: current_company.id, id: property.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

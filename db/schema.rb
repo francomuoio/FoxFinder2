@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_11_141952) do
+ActiveRecord::Schema.define(version: 2018_07_17_135602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(version: 2018_07_11_141952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "role", default: 0
+    t.integer "total_delay"
+    t.integer "sells_score", default: 0
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
     t.index ["siege_id"], name: "index_companies_on_siege_id"
@@ -118,6 +120,11 @@ ActiveRecord::Schema.define(version: 2018_07_11_141952) do
     t.boolean "fake"
     t.float "latitude"
     t.float "longitude"
+    t.string "mandat_time"
+    t.string "compromis_time"
+    t.string "delay"
+    t.string "sells_mark"
+    t.float "coefficient", default: 1.0
     t.index ["company_id"], name: "index_properties_on_company_id"
     t.index ["negociator_id"], name: "index_properties_on_negociator_id"
   end

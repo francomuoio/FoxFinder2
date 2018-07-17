@@ -2,10 +2,11 @@
 <%= simple_form_for(@property, as: :property, method: params[:method], url: company_properties_path) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <%= f.input :property_type, collection: ["Appartement", "Maison"] %>
-  <%= f.input :property_nbr, as: :numeric %>
+  <%= f.input :property_type, collection: ["Appartement", "Maison"], include_blank: false, include_hidden: false %>
   <%= f.input :property_date, as: :date %>
-  <%= f.input :mandat_type %>
+  <%= f.input :property_nbr, as: :numeric %>
+  <%= f.label :mandat_type %>
+  <%= f.collection_radio_buttons :mandat_type, [['Simple', 'Simple'], ['Exlusif', 'Exlusif']], :first, :last, include_blank: false, include_hidden: false %>
   <%= f.input :mandat_date, as: :date %>
   <%= f.input :compromis_date, as: :date %>
   <%= f.input :address %>

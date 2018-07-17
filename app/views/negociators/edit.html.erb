@@ -1,7 +1,7 @@
 <h1>Editing Negociator</h1>
 
 
-<%= simple_form_for(@negociator, as: :negociator, method: :put, url: company_negociator_path) do |f| %>
+<%= simple_form_for(@negociator, as: :negociator, method: :patch, url: company_negociator_path) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
   <%= f.input :first_name, autofocus: true, label: "Prénom" %>

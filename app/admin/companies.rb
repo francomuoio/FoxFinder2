@@ -11,6 +11,8 @@ ActiveAdmin.register Company do
   inputs 'Details' do
     input :email
     input :company_name, label: "Nom de l'Agence"
+    input :password
+    input :password_confirmation
     input :manager_first_name
     input :manager_last_name
     input :address
@@ -34,6 +36,6 @@ ActiveAdmin.register Company do
   end
   actions
 end
-permit_params :email, :company_name, :manager_first_name, :manager_last_name, :address, :siret, :pro_card_nbr, :phone, :company_type, :website, :description, :photo, :cover, :siege_id, :siege, :premium, :role
+permit_params :email, :company_name, :manager_first_name, :manager_last_name, :address, :siret, :pro_card_nbr, :phone, :company_type, :website, :description, :photo, :cover, :siege_id, :siege, :premium, :role, :password, :password_confirmation
 
 end

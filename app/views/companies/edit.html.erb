@@ -1,4 +1,22 @@
 Edit Company <%= @company.company_name %>
-<%= render 'companies/shared/form', company: @company, method: :update %>
+
+<%= simple_form_for(@company, as: :company, method: :patch, url: company_registration_path) do |f| %>
+<%= f.input :company_name, required: true, autofocus: true, label: "Nom de l'agence" %>
+<%= f.input :manager_first_name, required: true, autofocus: true, label: "Prénom du manager" %>
+<%= f.input :manager_last_name, required: true, autofocus: true, label: "Nom du manager" %>
+<%= f.input :email, required: true, autofocus: true, label: "Email" %>
+<%= f.input :pro_card_nbr, required: true, autofocus: true, label: "Numéro de carte professionnelle" %>
+<%= f.input :phone, required: true, autofocus: true, label: "Téléphone" %>
+<%= f.input :address, :input_html =>{:id => 'address'}, required: true, autofocus: true, label: "Adresse" %>
+<%= f.input :siret, required: true, autofocus: true, label: "SIRET" %>
+<%= f.text_area :description, required: true, autofocus:true, label: "Description de l'agence" %>
+<%= f.input :current_password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), label: "Mot de passe actuelle" %>
+<%= f.input :password, required: true, hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), label: "Mot de passe (laisser blanc en cas de non changement de mdp)" %>
+<%= f.input :password_confirmation, required: true, label: "Confirmer votre mot de passe (laisser blanc en cas de non changement de mdp)" %>
+<%= f.button :submit, "Edit", class: "btn btn-danger btn-block" %>
+<%= render "devise/shared/links" %>
+<% end %>
+© 2017, FoxFinder
+
 
 <%= link_to 'Back', companies_path %>

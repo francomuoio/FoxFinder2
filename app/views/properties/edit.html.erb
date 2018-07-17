@@ -1,5 +1,26 @@
 <h1>Editing Property <%= @property.address %></h1>
 
-<%= render 'form', property: @property %>
+
+<%= simple_form_for(@property, as: :property, method: :patch, url: company_property_path) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <%= f.input :property_type, collection: ["Appartement", "Maison"] %>
+  <%= f.input :property_nbr, as: :numeric %>
+  <%= f.input :property_date, as: :date %>
+  <%= f.input :mandat_type %>
+  <%= f.input :mandat_date, as: :date %>
+  <%= f.input :compromis_date, as: :date %>
+  <%= f.input :address %>
+  <%= f.input :price, as: :numeric %>
+  <%= f.collection_select :negociator_id, @negociator, :id, :full_name %>
+  <%= f.input :company_id, :as => :hidden, input_html: {id: 'companies_id', value: params[:company_id] } %>
+
+  <div class="form-inputs">
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Edit" %>
+  </div>
+<% end %>
 
 <%= link_to 'Back', company_property_path(company_id: current_company.id, id: @property.id) %>

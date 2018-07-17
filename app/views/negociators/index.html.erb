@@ -14,7 +14,7 @@
       <tr>
         <td><%= negociator.first_name %> <%= negociator.last_name %>
         <td><%= link_to 'Show', company_negociator_path(company_id: current_company.id, id: negociator.id) %></td>
-        <td><%= link_to 'Edit', edit_company_negociator_path(id: negociator, company_id: current_company.id) %></td>
+        <td><%= link_to 'Edit', edit_company_negociator_path(id: negociator, company_id: current_company.id), method: :patch %></td>
         <td><%= link_to 'Destroy', company_negociator_path(company_id: current_company.id, id: negociator.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
