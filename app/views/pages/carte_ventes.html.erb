@@ -7,6 +7,8 @@
     <% if @companies.size == 1  %>
     <h4 class="text-center"><strong>Pour vendre votre bien nous vous conseillons cette agence :</strong></h4>
     <% else %>
+
+    <%= params[:nb_piece] %>
     <h4 class="text-center"><strong>Pour vendre votre bien nous vous conseillons ces agences :</strong></h4>
     <% end %>
         <% délais_exclus = [] %>
