@@ -8,34 +8,33 @@ ActiveAdmin.register Company do
 
   form title: 'Crée une agence' do |f|
     f.semantic_errors
-  inputs 'Details' do
-    input :email
-    input :company_name, label: "Nom de l'Agence"
-    input :password
-    input :password_confirmation
-    input :manager_first_name
-    input :manager_last_name
-    input :address
-    input :siret
-    input :pro_card_nbr
-    input :phone
-    input :company_type
-    input :website
-    input :description
-    input :photo
-    input :cover
+  f.inputs 'Details' do
+    f.input :email
+    f.input :company_name, label: "Nom de l'Agence"
+    if action_name != "edit"
+      f.input :password
+      f.input :password_confirmation
+    end
+    f.input :manager_first_name
+    f.input :manager_last_name
+    f.input :address
+    f.input :siret
+    f.input :pro_card_nbr
+    f.input :phone
+    f.input :website
+    f.input :description
+    f.input :photo
+    f.input :cover
   end
-  inputs 'Siege' do
-    input :siege_id
-    input :siege
-
+  f.inputs 'Siege' do
+      f.collection_select :siege_id,Company.all, :id, :company_name, :include_blank => false, :value_method => :company_name
   end
   inputs 'Premium' do
     input :premium
-    input :role
   end
   actions
 end
-permit_params :email, :company_name, :manager_first_name, :manager_last_name, :address, :siret, :pro_card_nbr, :phone, :company_type, :website, :description, :photo, :cover, :siege_id, :siege, :premium, :role, :password, :password_confirmation
+permit_params :email, :company_name, :manager_first_name, :manager_last_name, :address, :siret,
+  :pro_card_nbr, :phone, :website, :description, :photo, :cover, :siege_id, :premium, :password, :password_confirmation, sub_company_attributes: [:siege_id]
 
 end

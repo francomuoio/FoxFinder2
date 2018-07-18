@@ -22,18 +22,19 @@ devise_for :users, path: 'user', controllers: {
  unlocks: 'users/unlocks'
 }
 
+resources :users
+
+
+get 'recherche_adresse', to: 'users#recherche_adresse'
+get 'recherche_type', to: 'users#recherche_type'
+get 'recherche_pieces', to: 'users#recherche_pieces'
+get 'recherche_info', to: 'users#recherche_info'
+get 'carte_ventes', to: 'users#carte_ventes'
+
 get 'mentions', to: 'pages#mentions'
 get 'cgu', to: 'pages#cgu'
 get 'pro', to: 'pages#pro'
-get 'tableau', to: 'biens#tables'
-get 'stat', to: 'biens#graph'
-get 'profile', to: 'users#public_show'
 get 'sansbien', to: 'pages#sansbien'
-get 'recherche_adresse', to: 'pages#recherche_adresse'
-get 'recherche_type', to: 'pages#recherche_type'
-get 'recherche_pieces', to: 'pages#recherche_pieces'
-get 'recherche_info', to: 'pages#recherche_info'
-get 'carte_ventes', to: 'pages#carte_ventes'
 get 'all_biens', to: 'biens#all_biens'
 get 'blog', to: 'pages#menublog'
 get 'commentvendre', to: 'pages#article1'

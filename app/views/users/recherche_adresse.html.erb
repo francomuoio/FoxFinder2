@@ -1,0 +1,35 @@
+<%= render 'shared/navbar' %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="ensemble-recherche-adresse-foxfinder">
+        <div class="load_bar">
+          <p id="active-foxfinder">1</p>
+          <p id="non-active-foxfinder">2</p>
+          <p id="non-active-foxfinder">3</p>
+          <p id="non-active-foxfinder">4</p>
+        </div>
+        <div class="fond-page">
+          <div class="fond-formulaire text-center">
+            <div class="title-form-foxfinder">
+              <!-- <h3 id="number-recherche">1</h3> -->
+              <h3>Quelle est l'adresse de votre bien à vendre ?</h3>
+            </div>
+            <div class="address-bar-foxfinder">
+              <%= form_tag recherche_type_path, id: "address_input", method: :get, autocomplete: 'on', class: "text-center" do %>
+                <%= text_field_tag :location, params[:location], {id: 'address', class: "namanyay-search-box", placeholder: 'n°, rue, ville', :required => true} %> <br>
+            </div>
+            <div class="text-center bouton-recherche-foxfinder">
+              <%= submit_tag "Suivant", id: "namanyay-search-btn-2" %>
+            </div>
+            <% end %>
+              <div class="interrogation-foxfinder">
+                <p id="point-interrogation-recherche" >?</p>
+                <p class="margin-right-1">Nous pourrons ainsi géolocaliser les ventes réalisées à proximité par les agences</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

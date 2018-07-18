@@ -29,14 +29,12 @@ class DeviseCreateCompanies < ActiveRecord::Migration[5.2]
       t.string :siret
       t.string :pro_card_nbr
       t.string :phone
-      t.string :company_type
-      t.boolean :siege, default: false
-      t.references :siege, index: true, default: nil
       t.boolean :premium
       t.string :website
       t.text :description
       t.string :photo
       t.string :cover
+      t.integer :siege_id
 
       ## Confirmable
       # t.string   :confirmation_token

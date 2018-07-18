@@ -44,13 +44,11 @@ end
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation, :website, :description])
-  #  devise_parameter_sanitizer.permit(:sign_up, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
     def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-      devise_parameter_sanitizer.permit(:account_update, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation, :website, :description, negociators_id: [:first_name, :last_name]])
+      devise_parameter_sanitizer.permit(:account_update, keys: [:manager_first_name, :email, :company_name, :pro_card_nbr, :password, :manager_last_name, :phone, :address, :siret, :password_confirmation, :website, :description])
     end
 
   # The path used after sign up.

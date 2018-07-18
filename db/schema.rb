@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_17_135602) do
+ActiveRecord::Schema.define(version: 2018_07_18_145630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,22 +80,19 @@ ActiveRecord::Schema.define(version: 2018_07_17_135602) do
     t.string "siret"
     t.string "pro_card_nbr"
     t.string "phone"
-    t.string "company_type"
-    t.boolean "siege", default: false
-    t.bigint "siege_id"
     t.boolean "premium"
     t.string "website"
     t.text "description"
     t.string "photo"
     t.string "cover"
+    t.integer "siege_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "role", default: 0
-    t.integer "total_delay"
     t.integer "sells_score", default: 0
+    t.boolean "sub"
+    t.boolean "siege"
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
-    t.index ["siege_id"], name: "index_companies_on_siege_id"
   end
 
   create_table "negociators", force: :cascade do |t|
@@ -120,11 +117,6 @@ ActiveRecord::Schema.define(version: 2018_07_17_135602) do
     t.boolean "fake"
     t.float "latitude"
     t.float "longitude"
-    t.string "mandat_time"
-    t.string "compromis_time"
-    t.string "delay"
-    t.string "sells_mark"
-    t.float "coefficient", default: 1.0
     t.index ["company_id"], name: "index_properties_on_company_id"
     t.index ["negociator_id"], name: "index_properties_on_negociator_id"
   end
@@ -148,6 +140,9 @@ ActiveRecord::Schema.define(version: 2018_07_17_135602) do
     t.string "address"
     t.string "property_type"
     t.integer "room_nbr"
+    t.string "first_company_result_id"
+    t.string "second_company_result_id"
+    t.string "third_company_result_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
