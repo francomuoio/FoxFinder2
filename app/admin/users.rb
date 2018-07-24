@@ -19,13 +19,14 @@ ActiveAdmin.register User do
     end
   end
 
-
-
   form title: 'User' do |f|
     f.semantic_errors
     f.inputs 'Details' do
       f.input :email
-      f.input :name
+      f.input :first_name
+      f.input :last_name
+      f.input :phone
+      f.input :address
       if action_name != "edit"
         f.input :password
         f.input :password_confirmation
