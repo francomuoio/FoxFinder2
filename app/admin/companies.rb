@@ -10,6 +10,32 @@ ActiveAdmin.register Company do
     actions
   end
 
+  show do
+    panel "Détails" do
+      attributes_table_for company do
+        row :company_name
+        row :last_sign_in_at
+        row :address
+        row :manager_first_name
+        row :manager_last_name
+      end
+    end
+    panel "negociators" do
+      table_for company.negociators do
+           column :id
+           column :first_name
+           column :last_name
+         end
+    end
+    panel "properties" do
+    table_for company.properties do
+         column :id
+         column :address
+         column :negociator_id
+       end
+     end
+  end
+
   form title: 'Agence' do |f|
     f.semantic_errors
     f.inputs 'Details' do
@@ -30,13 +56,13 @@ ActiveAdmin.register Company do
       f.input :photo
       f.input :cover
       f.inputs "properties" do
-        f.has_many :properties, allow_destroy: true do |b|
+        f.has_many :properties, allow_destroy: true,new_record: false do |b|
           b.input :address
           b.input :negociator_id
         end
       end
       f.inputs "negociators" do
-        f.has_many :negociators, allow_destroy: true do |b|
+        f.has_many :negociators, allow_destroy: true, new_record: false do |b|
           b.input :first_name
           b.input :last_name
         end
