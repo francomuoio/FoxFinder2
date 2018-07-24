@@ -112,7 +112,7 @@ class UsersController < ApplicationController
      @comp = []
      @properties.each do |p|
        @comp += Company.where(id: p.company_id)
-   end
+     end
      @comp.each do |company|
        if (company.siege_id == nil || company.siege == true)
          if !@companies.include?(company)
@@ -137,9 +137,15 @@ class UsersController < ApplicationController
      end
      @companies.sort! { |a, b|  b.sells_score <=> a.sells_score && a.total_delay <=> b.total_delay }
      @companies = @companies.take(3)
+     if (@companies.at(0) != nil)
      current_user.first_company_result_id =  @companies.at(0).company_name
-     current_user.second_company_result_id =  @companies.at(1).company_name
-     current_user.third_company_result_id = @companies.at(2).company_name
+     end
+     if (@companies.at(1) != nil)
+       current_user.second_company_result_id =  @companies.at(1).company_name
+     end
+     if (@companies.at(2) != nil)
+       current_user.third_company_result_id = @companies.at(2).company_name
+     end
      current_user.last_search = "#{params[:location]} | #{params[:room_type]} |  #{params[:nb_piece]} pièces"
      current_user.save
    end
