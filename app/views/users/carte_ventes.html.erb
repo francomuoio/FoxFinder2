@@ -9,11 +9,7 @@
     <% else %>
     <h4 class="text-center"><strong>Pour vendre votre bien nous vous conseillons ces agences :</strong></h4>
     <% end %>
-    
-      <% @companies.order("total_delay ASC").limit(3).each do |u| %>
-        <%# [] << u.area_ventes %>
-        <%# [] << u.delay %>
-        <%# [] << u.delai_exclu %>
+      <% @companies.each do |u| %>
         <div class="card-resultat-recherche-foxfinder">
           <div class="contact-agence-recherche-foxfinder">
             <div class="photo-agence-card-resultat">
@@ -25,31 +21,18 @@
 
             </div>
 
-              <h4><strong class="nom-agence"><%= u.company_name %></strong></h4>
+              <h4><strong class="nom-agence"><%= link_to "#{u.company_name}", company_path(id: u.id)%></strong></h4>
             <div class="agence-nom-resultat" style="margin-top: 10px">
 
-            <% if u.total_delay != nil && u.total_delay != 0 %>
-              <% if u.total_delay.round == délais_general.sort.first %>
-                <!-- <p>médails <strong>délais de ventes</strong></p> -->
-                <div class="popover__wrapper">
-                  <a href="#">
-                    <%= image_tag "m2.png", id: "logo-trophé" %>
-                  </a>
-                  <div class="push popover__content">
-                    <p class="popover__message">Meilleur en délais de vente</p>
-                  </div>
-                </div>
-              <% end %>
-            <% end %>
 
             </div>
 
           </div>
-
-
-              </p>
-              <p class="text-center">délai de vente</p>
-            </div>
+          <p class="text-center">note de vente</p>
+          <p class="text-center"><%= u.sells_score %></p>
+          <p class="text-center">délai de vente</p>
+          <p class="text-center"><%= u.total_delay %></p>
+        </div>
             <div class="card-perd-resultat-recherche">
 
               <p class="text-center" id="couleur-spécial" >

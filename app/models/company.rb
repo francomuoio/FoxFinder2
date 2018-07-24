@@ -9,6 +9,9 @@ class Company < ApplicationRecord
 
   has_one :siege_company, :class_name => 'Company', :foreign_key => :siege_id
   accepts_nested_attributes_for :siege_company
+  accepts_nested_attributes_for :properties, :allow_destroy => true
+  accepts_nested_attributes_for :negociators, :allow_destroy => true
+
 
   def siege?
    siege_id.nil?

@@ -6,7 +6,8 @@
 
  <br>
  <% if user_signed_in? %>
- <%= "bienvenue : #{current_user.first_name}" %>
+ <%= "bienvenue : #{current_user.first_name}" %><br>
+ <%= link_to "Rechercher", recherche_adresse_path %>
  <% end %>
  <% if company_signed_in? %>
  <%= "bienvenue : #{current_company.company_name}" %>

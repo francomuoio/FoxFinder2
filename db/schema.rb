@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_18_145630) do
+ActiveRecord::Schema.define(version: 2018_07_24_111333) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 2018_07_18_145630) do
     t.integer "sells_score", default: 0
     t.boolean "sub"
     t.boolean "siege"
+    t.float "total_delay"
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end
@@ -117,6 +118,7 @@ ActiveRecord::Schema.define(version: 2018_07_18_145630) do
     t.boolean "fake"
     t.float "latitude"
     t.float "longitude"
+    t.integer "siege_id"
     t.index ["company_id"], name: "index_properties_on_company_id"
     t.index ["negociator_id"], name: "index_properties_on_negociator_id"
   end
@@ -143,6 +145,7 @@ ActiveRecord::Schema.define(version: 2018_07_18_145630) do
     t.string "first_company_result_id"
     t.string "second_company_result_id"
     t.string "third_company_result_id"
+    t.string "last_search"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

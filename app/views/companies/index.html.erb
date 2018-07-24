@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Companies : <%= current_company.company_name  %> &  <%= current_company.email %> </h1>
+<h1>Company : <%= current_company.company_name  %> &  <%= current_company.email %> </h1>
 
 <table>
   <thead>
@@ -9,17 +9,15 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @companies.each do |company| %>
+  <tbody
       <tr>
-        <td><%= company.email %></td>
-        <td><%= link_to 'Show', company %> </td>
-        <td><%= link_to 'Negociators', company_negociators_path(current_company.id) %> </td>
-        <td><%= link_to 'Properties', company_properties_path(company_id: company.id) %> </td>
-        <td><%= link_to 'Edit', edit_company_path(company) %> </td>
-        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= current_company.email %></td>
+        <td><%= link_to 'Show ', current_company %></td>
+        <td><%= link_to 'Negociators ', company_negociators_path(current_company.id) %> </td>
+        <td><%= link_to 'Properties ', company_properties_path(company_id: current_company.id) %> </td>
+        <td><%= link_to 'Edit ', edit_company_path(current_company) %> </td>
+        <td><%= link_to 'Destroy ', current_company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
   </tbody>
 </table>
 

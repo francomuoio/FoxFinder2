@@ -1,12 +1,12 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_company!
+  before_action :authenticate_company!,  only: [:edit, :update, :destroy]
   before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :check_authorization, only: [:show, :edit, :update, :destroy]
+  before_action :check_authorization, only: [:edit, :update, :destroy]
 
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @company = Company.where(id: current_company.id)
   end
 
   # GET /companies/1

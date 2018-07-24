@@ -1,7 +1,6 @@
 class Property < ApplicationRecord
 validates :property_type, presence: true
 validates :property_nbr, presence: true
-validates :property_date, presence: true
 validates :mandat_type, presence: true
 validates :mandat_date, presence: true
 validates :compromis_date, presence: true

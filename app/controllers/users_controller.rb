@@ -81,9 +81,14 @@ class UsersController < ApplicationController
   def carte_ventes
     store_params_in_session
     if params[:room_type].present? && params[:location].present? && params[:nb_piece].present?
-      @properties = Property.near(params[:location], 0.5, units: :km).where(property_type: params[:room_type], property_nbr: params[:nb_piece])
+      if (params[:nb_piece] == "5+")
+        nb_piece = "5"
+      else
+        nb_piece = params[:nb_piece]
+      end
+      @properties = Property.near(params[:location], 0.5, units: :km).where(property_type: params[:room_type], property_nbr: nb_piece)
     else
-      redirect_to recherche_adresse_path
+      redirect_to recherche_adresse_path, notice: "missing args"
     end
     if @properties != nil
       if @properties.size < 10
@@ -94,21 +99,50 @@ class UsersController < ApplicationController
       end
         @new_properties = Property.near(params[:location], 0.5, units: :km).where(property_type: params[:room_type], property_nbr: new_nb_piece)
         @properties += @new_properties
+        end
         if @properties.size < 10
           @new_properties = Property.near(params[:location], 1, units: :km).where(property_type: params[:room_type], property_nbr: new_nb_piece)
-          @properties += @new_properties
         end
       end
-      if @properties.size == 0
+      if @properties == nil || @properties.size == 0
           redirect_to sansbien_path
           return
      end
-     @companies = Company.where(id: @properties.reorder(:company_id).pluck(:company_id))
-     @companies.each do |company|
-     get_sells_score(@properties.group_by(&:company), company)
-     end
+     @companies = []
+     @comp = []
+     @properties.each do |p|
+       @comp += Company.where(id: p.company_id)
    end
-  end
+     @comp.each do |company|
+       if (company.siege_id == nil || company.siege == true)
+         if !@companies.include?(company)
+           get_sells_score(@properties.group_by(&:company), company)
+           @companies.push(company)
+         end
+       else
+         company_siege = Company.find_by(id: company.siege_id)
+         if !@companies.include?(company_siege)
+
+         get_sells_score(@properties.group_by(&:company), company)
+          if company_siege.sells_score == nil || company_siege.sells_score < company.sells_score
+               company_siege.sells_score = company.sells_score
+          if company_siege.total_delay > company.total_delay
+            company_siege.total_delay = company.total_delay
+          end
+          company_siege.save
+          @companies.push(company_siege)
+               end
+           end
+       end
+     end
+     @companies.sort! { |a, b|  b.sells_score <=> a.sells_score && a.total_delay <=> b.total_delay }
+     @companies = @companies.take(3)
+     current_user.first_company_result_id =  @companies.at(0).company_name
+     current_user.second_company_result_id =  @companies.at(1).company_name
+     current_user.third_company_result_id = @companies.at(2).company_name
+     current_user.last_search = "#{params[:location]} | #{params[:room_type]} |  #{params[:nb_piece]} pièces"
+     current_user.save
+   end
 
   private
 
@@ -118,7 +152,7 @@ class UsersController < ApplicationController
      total_sell_nbr = 0
      properties.each do |k, v|
        v.each do |p|
-         if company.id == p.company_id
+       if company.id == p.company_id
            date = (p.compromis_date - p.mandat_date).to_i
            date = date / 7
            if ((date = 20 - date) < 0)
@@ -140,14 +174,13 @@ class UsersController < ApplicationController
            total = total + (date * coefficient)
            coef = coef + coefficient
          end
-      end
+        end
      end
      company.sells_score = (total / coef) + (total_sell_nbr * 0.5).round
      if (company.sells_score > 20)
        company.sells_score = 20
      end
      company.total_delay = total
-     company.sells_score
      company.save
    end
 
