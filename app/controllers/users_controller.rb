@@ -90,19 +90,20 @@ class UsersController < ApplicationController
     else
       redirect_to recherche_adresse_path, notice: "missing args"
     end
+
     if @properties != nil
       if @properties.size < 10
         if params[:nb_piece] != "5+"
-        new_nb_piece = (params[:nb_piece].to_i + 1).to_s
-      else
-        new_nb_piece = "4"
-      end
+          new_nb_piece = (params[:nb_piece].to_i + 1).to_s
+        else
+          new_nb_piece = "4"
+        end
         @new_properties = Property.near(params[:location], 0.5, units: :km).where(property_type: params[:room_type], property_nbr: new_nb_piece)
         @properties += @new_properties
-        end
         if @properties.size < 10
           @new_properties = Property.near(params[:location], 1, units: :km).where(property_type: params[:room_type], property_nbr: new_nb_piece)
         end
+       end
       end
       if @properties == nil || @properties.size == 0
           redirect_to sansbien_path
@@ -113,6 +114,8 @@ class UsersController < ApplicationController
      @properties.each do |p|
        @comp += Company.where(id: p.company_id)
      end
+     @comp.each do |c|
+     end
      @comp.each do |company|
        if (company.siege_id == nil || company.siege == true)
          if !@companies.include?(company)
@@ -122,29 +125,36 @@ class UsersController < ApplicationController
        else
          company_siege = Company.find_by(id: company.siege_id)
          if !@companies.include?(company_siege)
-
-         get_sells_score(@properties.group_by(&:company), company)
-          if company_siege.sells_score == nil || company_siege.sells_score < company.sells_score
-               company_siege.sells_score = company.sells_score
-          if company_siege.total_delay > company.total_delay
-            company_siege.total_delay = company.total_delay
-          end
-          company_siege.save
-          @companies.push(company_siege)
-               end
+           get_sells_score(@properties.group_by(&:company), company)
+            if company_siege.sells_score == nil || company_siege.sells_score < company.sells_score
+                   company_siege.sells_score = company.sells_score
+              if company_siege.total_delay > company.total_delay
+                company_siege.total_delay = company.total_delay
+              end
+              company_siege.save
+            end
+              @companies.push(company_siege)
            end
        end
+     end
+     @companies.each do |c|
      end
      @companies.sort! { |a, b|  b.sells_score <=> a.sells_score && a.total_delay <=> b.total_delay }
      @companies = @companies.take(3)
      if (@companies.at(0) != nil)
      current_user.first_company_result_id =  @companies.at(0).company_name
+    else
+     current_user.first_company_result_id = "pas de résultat"
      end
      if (@companies.at(1) != nil)
        current_user.second_company_result_id =  @companies.at(1).company_name
-     end
+     else
+       current_user.second_company_result_id = "pas de résultat"
+      end
      if (@companies.at(2) != nil)
        current_user.third_company_result_id = @companies.at(2).company_name
+     else
+       current_user.third_company_result_id = "pas de résultat"
      end
      current_user.last_search = "#{params[:location]} | #{params[:room_type]} |  #{params[:nb_piece]} pièces"
      current_user.save
