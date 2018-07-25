@@ -17,19 +17,20 @@
             </div>
             <div class="address-bar-foxfinder">
               <%= form_tag recherche_type_path, id: "address_input", method: :get, autocomplete: 'on', class: "text-center" do %>
-                <%= text_field_tag :location, params[:location], {id: 'address', class: "namanyay-search-box", placeholder: 'n°, rue, ville', :required => true} %> <br>
+              <%= text_field_tag :location, params[:location], {id: 'address', class: "namanyay-search-box", placeholder: 'n°, rue, ville', :required => true} %>
+              <br>
             </div>
             <div class="text-center bouton-recherche-foxfinder">
               <%= submit_tag "Suivant", id: "namanyay-search-btn-2" %>
             </div>
-            <% end %>
-              <div class="interrogation-foxfinder">
-                <p id="point-interrogation-recherche" >?</p>
-                <p class="margin-right-1">Nous pourrons ainsi géolocaliser les ventes réalisées à proximité par les agences</p>
-              </div>
+          <% end %>
+          <div class="interrogation-foxfinder">
+            <p id="point-interrogation-recherche">?</p>
+            <p class="margin-right-1">Nous pourrons ainsi géolocaliser les ventes réalisées à proximité par les agences</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>

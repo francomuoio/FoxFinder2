@@ -5,5 +5,4 @@ ActiveAdmin.register AdminUser do
     column :last_sign_in_at
     actions
   end
-
 end

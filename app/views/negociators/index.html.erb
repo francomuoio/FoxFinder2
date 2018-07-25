@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Negociators de <%= current_company.company_name %></h1>
+<h1>Negociators de
+  <%= current_company.company_name %></h1>
 
 <table>
   <thead>
@@ -12,15 +13,16 @@
   <tbody>
     <% @negociators.each do |negociator| %>
       <tr>
-        <td><%= negociator.first_name %> <%= negociator.last_name %>
-        <td><%= link_to 'Show', company_negociator_path(company_id: current_company.id, id: negociator.id) %></td>
-        <td><%= link_to 'Edit', edit_company_negociator_path(id: negociator, company_id: current_company.id), method: :patch %></td>
-        <td><%= link_to 'Destroy', company_negociator_path(company_id: current_company.id, id: negociator.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <td><%= negociator.first_name %>
+          <%= negociator.last_name %>
+          <td><%= link_to 'Show', company_negociator_path(company_id: current_company.id, id: negociator.id) %></td>
+          <td><%= link_to 'Edit', edit_company_negociator_path(id: negociator, company_id: current_company.id), method: :patch %></td>
+          <td><%= link_to 'Destroy', company_negociator_path(company_id: current_company.id, id: negociator.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Negociator', new_company_negociator_path %>
+  <%= link_to 'New Negociator', new_company_negociator_path %>

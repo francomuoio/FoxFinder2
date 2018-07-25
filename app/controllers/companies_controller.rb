@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_company!,  only: [:edit, :update, :destroy]
-  before_action :set_company, only: [:show, :edit, :update, :destroy]
-  before_action :check_authorization, only: [:edit, :update, :destroy]
+  before_action :authenticate_company!, only: %i[edit update destroy]
+  before_action :set_company, only: %i[show edit update destroy]
+  before_action :check_authorization, only: %i[edit update destroy]
 
   # GET /companies
   # GET /companies.json
@@ -22,8 +22,7 @@ class CompaniesController < ApplicationController
   end
 
   # GET /companies/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /companies
   # POST /companies.json
@@ -68,19 +67,20 @@ class CompaniesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_company
-      @company = Company.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def company_params
-      params.fetch(:company, {})
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_company
+    @company = Company.find(params[:id])
+  end
 
-    def check_authorization
-      if (@company.id != current_company.id)
-        redirect_to company_path(current_company.id), alert: "Vous n'avez pas les droits requis pour cette action"
-      end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def company_params
+    params.fetch(:company, {})
+  end
+
+  def check_authorization
+    if @company.id != current_company.id
+      redirect_to company_path(current_company.id), alert: "Vous n'avez pas les droits requis pour cette action"
     end
+  end
 end

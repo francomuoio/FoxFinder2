@@ -1,4 +1,5 @@
-Edit Company <%= @company.company_name %>
+Edit Company
+<%= @company.company_name %>
 
 <%= simple_form_for(@company, as: :company, method: :patch, url: company_registration_path) do |f| %>
 <%= f.input :company_name, required: true, autofocus: true, label: "Nom de l'agence" %>
@@ -17,6 +18,5 @@ Edit Company <%= @company.company_name %>
 <%= render "devise/shared/links" %>
 <% end %>
 © 2017, FoxFinder
-
 
 <%= link_to 'Back', companies_path %>

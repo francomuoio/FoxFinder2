@@ -9,7 +9,7 @@ ActiveAdmin.register User do
   show do
     attributes_table :id, :name, :email
 
-    panel "Dernière recherche" do
+    panel 'Dernière recherche' do
       table_for user do
         column :last_search
         column :first_company_result_id
@@ -27,7 +27,7 @@ ActiveAdmin.register User do
       f.input :last_name
       f.input :phone
       f.input :address
-      if action_name != "edit"
+      if action_name != 'edit'
         f.input :password
         f.input :password_confirmation
       end
@@ -35,6 +35,5 @@ ActiveAdmin.register User do
     actions
   end
 
-permit_params :email, :password, :password_confirmation
-
+  permit_params :email, :password, :password_confirmation
 end

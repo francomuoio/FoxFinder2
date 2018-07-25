@@ -1,15 +1,14 @@
 <%= link_to t(".sign_in", default: "Se connecter user"), new_user_session_path, class: "btn btn-danger" %>
 <%= link_to t(".sign_in", default: "Se connecter company"), new_company_session_path, class: "btn btn-danger" %>
-<%= link_to  "Déconnexion user", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
-<%= link_to  "Déconnexion company", destroy_company_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+<%= link_to "Déconnexion user", destroy_user_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
+<%= link_to "Déconnexion company", destroy_company_session_path, method: :delete, class: "navbar-wagon-item navbar-wagon-link" %>
 
-
- <br>
- <% if user_signed_in? %>
- <%= "bienvenue : #{current_user.first_name}" %><br>
- <%= link_to "Rechercher", recherche_adresse_path %>
- <% end %>
- <% if company_signed_in? %>
- <%= "bienvenue : #{current_company.company_name}" %>
- <%= link_to  "Profile", companies_path, class: "navbar-wagon-item navbar-wagon-link" %>
- <% end %>
+<br>
+<% if user_signed_in? %>
+  <%= "bienvenue : #{current_user.first_name}" %><br>
+  <%= link_to "Rechercher", recherche_adresse_path %>
+<% end %>
+<% if company_signed_in? %>
+  <%= "bienvenue : #{current_company.company_name}" %>
+  <%= link_to "Profile", companies_path, class: "navbar-wagon-item navbar-wagon-link" %>
+<% end %>

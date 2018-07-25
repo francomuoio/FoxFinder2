@@ -1,24 +1,22 @@
-
 <%= simple_form_for(@property, as: :property, method: params[:method], url: company_properties_path) do |f| %>
-  <%= f.error_notification %>
-  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-  <%= f.input :property_type, collection: ["Appartement", "Maison", "Fonds de commerce", "Immeuble de rapport", "Terrain", "Stationnement", "Local Commercial", "Murs commerciaux"], include_blank: false, include_hidden: false %>
-  <%= f.collection_radio_buttons :property_nbr, ["1", "2", "3", "4", ["5", "5+"]], :first, :last, include_blank: false, include_hidden: false %><br>
-  <%= f.label :mandat_type %>
-  <%= f.collection_radio_buttons :mandat_type, [['Simple', 'Simple'], ['Exlusif', 'Exlusif']], :first, :last, include_blank: false, include_hidden: false %>
-  <%= f.input :mandat_date, as: :date %>
-  <%= f.input :compromis_date, as: :date %>
-  <%= f.input :address %>
-  <%= f.input :price, as: :numeric %>
-  <%= f.collection_select :negociator_id, @negociator, :id, :full_name %>
-  <%= f.input :company_id, :as => :hidden, input_html: {id: 'companies_id', value: params[:company_id] } %>
-  <% if current_company.siege_id != nil %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<%= f.input :property_type, collection: ["Appartement", "Maison", "Fonds de commerce", "Immeuble de rapport", "Terrain", "Stationnement", "Local Commercial", "Murs commerciaux"], include_blank: false, include_hidden: false %>
+<%= f.collection_radio_buttons :property_nbr, ["1", "2", "3", "4", ["5", "5+"]], :first, :last, include_blank: false, include_hidden: false %><br>
+<%= f.label :mandat_type %>
+<%= f.collection_radio_buttons :mandat_type, [['Simple', 'Simple'], ['Exlusif', 'Exlusif']], :first, :last, include_blank: false, include_hidden: false %>
+<%= f.input :mandat_date, as: :date %>
+<%= f.input :compromis_date, as: :date %>
+<%= f.input :address %>
+<%= f.input :price, as: :numeric %>
+<%= f.collection_select :negociator_id, @negociator, :id, :full_name %>
+<%= f.input :company_id, :as => :hidden, input_html: {id: 'companies_id', value: params[:company_id] } %>
+<% if current_company.siege_id != nil %>
   <%= f.input :siege_id, :as => :hidden, input_html: {id: 'companies_id', value: current_company.siege_id } %>
 <% end %>
-  <div class="form-inputs">
-  </div>
+<div class="form-inputs"></div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
-  </div>
+<div class="form-actions">
+  <%= f.button :submit %>
+</div>
 <% end %>
